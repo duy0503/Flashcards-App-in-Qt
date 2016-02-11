@@ -86,6 +86,7 @@ bool MainWindow::loadFile(const QString &fileName)
     }
 
     QTextStream in(&file);
+    deck.clear();
     while(!in.atEnd())
     {
         cardType* newCard = new cardType;
@@ -105,6 +106,7 @@ bool MainWindow::loadFile(const QString &fileName)
 
 void MainWindow::display()
 {
+    ui->textBrowser->clear();
     foreach (cardType* card, deck)
     {
         ui->textBrowser->append(card->Question);
