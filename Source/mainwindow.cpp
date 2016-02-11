@@ -21,6 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    foreach ( cardType* card, deck)
+    {
+        delete card;
+    }
 }
 
 void MainWindow::createActions()
