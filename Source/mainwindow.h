@@ -24,6 +24,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QList<cardType*> deck;
+    QString currentFileName;
 
     void createActions();
     void createToolbar();
@@ -32,6 +33,8 @@ private:
     bool saveFile(const QString &fileName);
     bool okToContinue();
     void display();   //display the flashcards
+    void clearDeck();
+    void setCurrentFile(const QString &fileName);
 
     QMenu *fileMenu;
 

@@ -21,10 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-    foreach ( cardType* card, deck)
-    {
-        delete card;
-    }
+    clearDeck();
+
 }
 
 void MainWindow::createActions()
@@ -86,7 +84,9 @@ bool MainWindow::loadFile(const QString &fileName)
     }
 
     QTextStream in(&file);
-    deck.clear();
+
+    // Clear the deck
+    clearDeck();
     while(!in.atEnd())
     {
         cardType* newCard = new cardType;
@@ -101,6 +101,7 @@ bool MainWindow::loadFile(const QString &fileName)
 
     //Call function display() to show the cards
     display();
+    setCurrentFile(fileName);
     return true;
 }
 
@@ -115,3 +116,16 @@ void MainWindow::display()
 
 }
 
+void MainWindow::clearDeck()
+{
+    foreach ( cardType* card, deck)
+    {
+        delete card;
+    }
+    deck.clear();
+}
+
+void MainWindow::setCurrentFile(const QString &fileName)
+{
+    currentFileName = fileName;
+}
