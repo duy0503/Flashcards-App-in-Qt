@@ -1,0 +1,10 @@
+What is the most widely used approach to agile software development?
+Extreme Programming (XP)
+What does a well-designed agile process do to the cost of change curve?
+It "flattens" it
+How many agility principles are there?
+12
+what are the four framework activities of the XP process?
+Planning, design, coding, and testing
+Which agile software development method did Jeff Sutherland create?
+Scrum
