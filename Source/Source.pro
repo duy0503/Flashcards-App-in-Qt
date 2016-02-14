@@ -13,9 +13,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    deck.cpp \
+    flashcard.cpp \
+    carddisplay.cpp
 
 HEADERS  += mainwindow.h \
+    deck.h \
+    carddisplay.h \
     flashcard.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    flashcard.ui
+
+DISTFILES += \
+    FlashcardForm.ui.qml \
+    Flashcard.qml

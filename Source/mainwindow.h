@@ -2,51 +2,43 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
 #include <flashcard.h>
-#include <QList>
+#include <deck.h>
+#include <carddisplay.h>
 
-class QAction;
-class QLabel;
-
+// class QAction;
+// class QLabel;
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
-public:
+  public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-private:
+  private:
     Ui::MainWindow *ui;
-    QList<cardType*> deck;
     QString currentFileName;
+    Deck deck;
+    CardDisplay display;
 
-    void createActions();
-    void createToolbar();
-    void createMenu();
-    bool loadFile(const QString &fileName);
-    bool saveFile(const QString &fileName);
     bool okToContinue();
-    void display();   //display the flashcards
-    void clearDeck();
     void setCurrentFile(const QString &fileName);
+    void openFile();
 
-    QMenu *fileMenu;
-
-    QAction *openAction;
-    QAction *newAction;
-protected:
+  protected:
     //void closeEvent(QCloseEvent *event);
 
-private slots:
-    //void newFile();
-    void openFile();
-    //bool saveFile();
+  private slots:
+    void on_actionNew_triggered();      // triggered whenver the new button is clicked
+    void on_actionOpen_triggered();     // triggered whenever the open button is clicked
+    void on_actionSave_triggered();     // triggered whenever the save button is clicked
+    void on_actionClose_triggered();    // triggered whenever the close button is clicked
 };
 
 #endif // MAINWINDOW_H
