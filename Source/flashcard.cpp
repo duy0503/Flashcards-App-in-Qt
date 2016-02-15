@@ -21,6 +21,7 @@ void Flashcard::setAnswer(QString answer) {
 
 void Flashcard::setKeywords(QString keywords){
     keywords_ = keywords;
+    this->setWindowTitle(keywords_);
     keywordsButton->setMinimumWidth(300);
     keywordsButton->setMinimumHeight(100);
     keywordsButton->setText(keywords);
