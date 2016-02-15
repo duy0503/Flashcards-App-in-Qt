@@ -93,7 +93,6 @@ void MainWindow::Display() {
     Flashcard* card;
     foreach (card, deck.deck_) {
         ScrollAreaLayout->addWidget(card->button, pos, 0);
-        //card->show();
         pos++;
     }
     ui->scrollAreaWidgetContents->setLayout(ScrollAreaLayout);
