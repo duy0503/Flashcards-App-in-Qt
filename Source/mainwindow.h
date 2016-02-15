@@ -3,12 +3,12 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QGridLayout>
 #include <flashcard.h>
 #include <deck.h>
-#include <carddisplay.h>
+//#include <carddisplay.h>
 
-// class QAction;
-// class QLabel;
+
 
 namespace Ui {
 class MainWindow;
@@ -25,11 +25,14 @@ class MainWindow : public QMainWindow {
     Ui::MainWindow *ui;
     QString currentFileName;
     Deck deck;
-    CardDisplay display;
+    QGridLayout *ScrollAreaLayout;
 
     bool okToContinue();
     void setCurrentFile(const QString &fileName);
     void openFile();
+    void Display();
+    void updateDisplayWindow();
+    void clearScrollArea();
 
   protected:
     //void closeEvent(QCloseEvent *event);

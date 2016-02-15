@@ -149,12 +149,15 @@ QScrollBar {
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>612</width>
-            <height>296</height>
+            <width>614</width>
+            <height>287</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -198,7 +201,7 @@ QScrollBar {
      <x>0</x>
      <y>0</y>
      <width>631</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

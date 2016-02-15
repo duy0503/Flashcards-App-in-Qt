@@ -7,6 +7,7 @@ bool Deck::Open(const QString &fileName) {
     }
 
     QTextStream in(&file);
+    Clear();
     while(!in.atEnd()){
         Flashcard* newcard = new Flashcard;
         deck_.append(newcard);
@@ -16,8 +17,20 @@ bool Deck::Open(const QString &fileName) {
 
         QString answer = in.readLine();
         newcard->SetAnswer(answer);
+
+        QString keywords = in.readLine();
+        newcard->SetKeywords(keywords);
     }
     return true;
+}
+
+void Deck::Clear()
+{
+    foreach(Flashcard *card, deck_)
+    {
+        delete card;
+    }
+    deck_.clear();
 }
 
 /* TODO: Implement Save
