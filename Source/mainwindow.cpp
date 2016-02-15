@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    display.Set(ui->scrollAreaWidgetContents, &deck);
 }
 
 MainWindow::~MainWindow() {
@@ -65,7 +66,6 @@ void MainWindow::openFile() {
         bool success = deck.Open(fileName);
         if (success) {
             setCurrentFile(fileName);
-            display.Set(ui->scrollAreaWidgetContents, &deck);
             display.Update();
             //deck.Display(ui->scrollAreaWidgetContents);
         }
