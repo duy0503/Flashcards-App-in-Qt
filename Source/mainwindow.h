@@ -30,7 +30,7 @@ class MainWindow : public QMainWindow {
     bool okToContinue();
     void setCurrentFile(const QString &fileName);
     void openFile();
-    void Display();
+    void display();
     void updateDisplayWindow();
     void clearScrollArea();
 

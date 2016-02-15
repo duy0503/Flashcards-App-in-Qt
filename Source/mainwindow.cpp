@@ -83,16 +83,16 @@ void MainWindow::openFile() {
 */
 void MainWindow::updateDisplayWindow(){
     clearScrollArea();
-    Display();
+    display();
 }
 
 /* Function to display the list of cards on Main Window */
-void MainWindow::Display() {
+void MainWindow::display() {
 
     int pos = 0;
     Flashcard* card;
     foreach (card, deck.deck_) {
-        ScrollAreaLayout->addWidget(card->button, pos, 0);
+        ScrollAreaLayout->addWidget(card->keywordsButton, pos, 0);
         pos++;
     }
     ui->scrollAreaWidgetContents->setLayout(ScrollAreaLayout);

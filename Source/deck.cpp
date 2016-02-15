@@ -13,13 +13,13 @@ bool Deck::Open(const QString &fileName) {
         deck_.append(newcard);
 
         QString question = in.readLine();
-        newcard->SetQuestion(question);
+        newcard->setQuestion(question);
 
         QString answer = in.readLine();
-        newcard->SetAnswer(answer);
+        newcard->setAnswer(answer);
 
         QString keywords = in.readLine();
-        newcard->SetKeywords(keywords);
+        newcard->setKeywords(keywords);
     }
     return true;
 }

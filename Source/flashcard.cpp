@@ -1,46 +1,47 @@
 #include "flashcard.h"
 #include "ui_flashcard.h"
 
-QString Flashcard::GetQuestion() {
+QString Flashcard::getQuestion() {
     return question_;
 }
 
-void Flashcard::SetQuestion(QString question) {
+void Flashcard::setQuestion(QString question) {
     question_ = question;
     ui->QuestionLabel->setText(question);
 }
 
-QString Flashcard::GetAnswer() {
+QString Flashcard::getAnswer() {
     return answer_;
 }
 
-void Flashcard::SetAnswer(QString answer) {
+void Flashcard::setAnswer(QString answer) {
     answer_ = answer;
     ui->AnswerLabel->setText(answer);
 }
 
-void Flashcard::SetKeywords(QString keywords){
+void Flashcard::setKeywords(QString keywords){
     keywords_ = keywords;
-    button->setMinimumWidth(300);
-    button->setMinimumHeight(100);
-    button->setText(keywords);
-    QFont font = button->font();
+    keywordsButton->setMinimumWidth(300);
+    keywordsButton->setMinimumHeight(100);
+    keywordsButton->setText(keywords);
+    QFont font = keywordsButton->font();
     font.setPointSize(12);
-    button->setFont(font);
-    button->setStyleSheet("background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffff99, stop: 1 #ffff00)");
-    QObject::connect(button, SIGNAL(clicked(bool)), this, SLOT(ShowCard()));
+    keywordsButton->setFont(font);
+    keywordsButton->setStyleSheet("background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffff99, stop: 1 #ffff00)");
+    QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(ShowCard()));
 }
 
-QString Flashcard::GetKeywords(){
+QString Flashcard::getKeywords(){
     return keywords_;
 }
+
 
 Flashcard::Flashcard(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Flashcard)
 {
     ui->setupUi(this);
-    button = new QPushButton(this);
+    keywordsButton = new QPushButton(this);
 }
 
 Flashcard::~Flashcard()
