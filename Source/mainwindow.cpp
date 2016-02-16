@@ -93,11 +93,15 @@ void MainWindow::updateDisplayWindow(){
 /* Function to display the list of cards on Main Window */
 void MainWindow::display() {
 
-    int pos = 0;
+    int total = 0;
+    int row = 0;
+    int column = 0;
     Flashcard* card;
     foreach (card, deck.deck_) {
-        ScrollAreaLayout->addWidget(card->keywordsButton, pos, 0);
-        pos++;
+        row = total/3;
+        column = total % 3;
+        ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
+        total++;
     }
     ui->scrollAreaWidgetContents->setLayout(ScrollAreaLayout);
     ui->TestYourselfButton->show();
