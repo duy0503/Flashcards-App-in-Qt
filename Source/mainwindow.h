@@ -6,6 +6,8 @@
 #include <QGridLayout>
 #include <flashcard.h>
 #include <deck.h>
+#include <QResizeEvent>
+#include <QSize>
 //#include <carddisplay.h>
 
 
@@ -33,12 +35,13 @@ class MainWindow : public QMainWindow {
     void display();
     void updateDisplayWindow();
     void clearScrollArea();
+    void resizeEvent(QResizeEvent* event);
 
   protected:
     //void closeEvent(QCloseEvent *event);
 
   private slots:
-    void on_actionNew_triggered();      // triggered whenver the new button is clicked
+    void on_actionNew_triggered();      // triggered whenever the new button is clicked
     void on_actionOpen_triggered();     // triggered whenever the open button is clicked
     void on_actionSave_triggered();     // triggered whenever the save button is clicked
     void on_actionClose_triggered();    // triggered whenever the close button is clicked

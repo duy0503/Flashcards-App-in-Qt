@@ -7,6 +7,8 @@
 #include <QTextStream>
 #include <QGridLayout>
 #include <QVBoxLayout>
+#include <QResizeEvent>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -92,20 +94,19 @@ void MainWindow::updateDisplayWindow(){
 
 /* Function to display the list of cards on Main Window */
 void MainWindow::display() {
-
-    int total = 0;
-    int row = 0;
-    int column = 0;
+    int columns = qMax(this->size().width(), 600) / 600;
     Flashcard* card;
+    int total = 0;
+
     foreach (card, deck.deck_) {
-        row = total/3;
-        column = total % 3;
+        int row = total / columns;
+        int column = total % columns;
         ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
         total++;
     }
+
     ui->scrollAreaWidgetContents->setLayout(ScrollAreaLayout);
     ui->TestYourselfButton->show();
-
 }
 
 /* Function to clear the old list of cards' widgets in the Main Window */
@@ -120,4 +121,7 @@ void MainWindow::clearScrollArea(){
     }
 }
 
-
+void MainWindow::resizeEvent(QResizeEvent* event) {
+    QMainWindow::resizeEvent(event);
+    display();
+}
