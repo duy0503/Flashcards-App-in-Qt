@@ -47,6 +47,7 @@ Flashcard::Flashcard(QWidget *parent) :
 
 Flashcard::~Flashcard()
 {
+    delete keywordsButton;
     delete ui;
 }
 
