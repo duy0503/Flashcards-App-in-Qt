@@ -1,2 +1,5 @@
+# folders made by QtCreator to store builds
 build*
+
+# user configurations for QtCreator
 *.user
