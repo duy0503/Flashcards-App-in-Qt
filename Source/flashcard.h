@@ -54,7 +54,7 @@ typedef class Flashcard : public QWidget {
     void setKeywords(QString keywords);
 
     /**
-     * @brief Default constructor for Flashcard
+     * @brief Constructor for Flashcard
      * @param parent is a pointer to the flashcard's parent.
      */
     explicit Flashcard(QWidget *parent = 0);

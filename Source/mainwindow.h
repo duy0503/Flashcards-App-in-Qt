@@ -1,14 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QFileDialog>
-#include <QGridLayout>
-#include <flashcard.h>
-#include <deck.h>
-#include <QResizeEvent>
-#include <QSize>
-//#include <carddisplay.h>
+#include <QMainWindow>      // QMainWindow
+#include <QFileDialog>      // QFileDialog
+#include <QGridLayout>      // QGridLayout
+#include <QResizeEvent>     // QResizeEvent
+#include <QSize>            // QSize
+#include <flashcard.h>      // Flashcard class
+#include <deck.h>           // Deck class
 
 
 
@@ -20,17 +19,52 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
   public:
+    /**
+     * @brief Constructor for MainWindow.
+     * @param parent is a pointer to MainWindow's parent.
+     */
     explicit MainWindow(QWidget *parent = 0);
+
+    /**
+     * @brief Destructor for MainWindow.
+     */
     ~MainWindow();
 
   private:
+    /**
+     * @brief MainWindow's graphical components.
+     */
     Ui::MainWindow *ui;
+
+    /**
+     * @brief A QString which holds the file name of the file that's currently open.
+     */
     QString currentFileName;
+
+    /**
+     * @brief A Deck that holds the flashcards in memory.
+     */
     Deck deck;
+
+    /**
+     * @brief A pointer to the QGridLayout which holds the display for the cards.
+     */
     QGridLayout *ScrollAreaLayout;
 
+    /**
+     * @brief Checks if the file is modified. If it returns true, we should prompt the user to save.
+     * @returns A bool that is true if there are any unsaved changes, or false otherwise.
+     */
     bool okToContinue();
+
+    /**
+     * @brief Setter function for currentFileName.
+     */
     void setCurrentFile(const QString &fileName);
+
+    /**
+     * @brief Opens a
+     */
     void openFile();
     void display();
     void updateDisplayWindow();
