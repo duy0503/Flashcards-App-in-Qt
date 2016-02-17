@@ -47,7 +47,7 @@ Flashcard::Flashcard(QWidget *parent) :
 
 Flashcard::~Flashcard()
 {
-    //delete ui;
+    delete ui;
 }
 
 void Flashcard::ShowCard()
