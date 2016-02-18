@@ -17,15 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle(tr("Flashcards"));
     ScrollAreaLayout = new QGridLayout();
-    ui->actionNew->setShortcut(QKeySequence::New);
-    ui->actionNew->setStatusTip(tr("Create a new deck"));
-    ui->actionOpen->setShortcut(QKeySequence::Open);
-    ui->actionOpen->setStatusTip(tr("Open an existing deck"));
-    ui->actionSave->setShortcut(QKeySequence::Save);
-    ui->actionSave->setStatusTip(tr("Save deck"));
     ui->TestYourselfButton->hide();
-    ui->TestYourselfButton->setStyleSheet("background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #72F221, stop: 1 #72F221)");
-    ui->AddNewCardButton->setStyleSheet("background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #72F221, stop: 1 #72F221)");
 }
 
 MainWindow::~MainWindow() {
@@ -101,6 +93,7 @@ void MainWindow::display() {
     foreach (card, deck.deck_) {
         int row = total / columns;
         int column = total % columns;
+        card->keywordsButton->setMinimumHeight(columns*50 + 50);
         ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
         total++;
     }
