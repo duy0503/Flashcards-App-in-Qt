@@ -29,7 +29,7 @@ void Flashcard::setKeywords(QString keywords){
     font.setPointSize(15);
     keywordsButton->setFont(font);
     keywordsButton->setStyleSheet("background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffff99, stop: 1 #ffff00)");
-    QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(ShowCard()));
+    QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 
 QString Flashcard::getKeywords(){
@@ -51,7 +51,8 @@ Flashcard::~Flashcard()
     delete ui;
 }
 
-void Flashcard::ShowCard()
+void Flashcard::showCard()
 {
     this->show();
 }
+

@@ -9,6 +9,7 @@
 
 typedef struct Deck {
   public:
+    Deck();
     /**
      * @brief A QList which stores pointers to Flashcards.
      * @todo Make this private.
@@ -18,8 +19,9 @@ typedef struct Deck {
     /**
      * @brief Unused.
      */
-    QList<Flashcard*> newdeck;
+    //QList<Flashcard*> newdeck;
 
+    bool isDeckModified();
     /**
      * @brief Opens a deck from fileName and stores it in deck_.
      * @param fileName is a QString that points toward the location of the file.
@@ -38,6 +40,9 @@ typedef struct Deck {
      * @brief Clears the deck_ of all its contents.
      */
     void Clear();
+
+   private:
+    bool deckModified_;
 } Deck;
 
 #endif // DECK_H

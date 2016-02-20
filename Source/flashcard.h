@@ -1,9 +1,9 @@
 #ifndef FLASHCARD_H
 #define FLASHCARD_H
 
-#include <QWidget>     // QWidget
-#include <QPushButton> // QPushButton
-#include <QString>     // QString
+#include <QWidget>
+#include <QPushButton>
+#include <QString>
 
 namespace Ui {
 class Flashcard;
@@ -93,7 +93,7 @@ typedef class Flashcard : public QWidget {
     Ui::Flashcard *ui;
 
 private slots:
-    void ShowCard();
+    void showCard();
 
 
 } Flashcard;

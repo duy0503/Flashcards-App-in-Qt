@@ -6,9 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QGridLayout>
-#include <QVBoxLayout>
 #include <QResizeEvent>
-#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -35,24 +33,34 @@ void MainWindow::on_actionOpen_triggered() {
 
 void MainWindow::on_actionSave_triggered()
 {
-
+    saveFile();
 }
 
 void MainWindow::on_actionClose_triggered()
 {
-
+    QWidget::close();
 }
 
-bool MainWindow::okToContinue() {
-    if (isWindowModified())
+void MainWindow::on_actionSave_As_triggered()
+{
+    saveAsFile();
+}
+
+bool MainWindow::okToClose() {
+    if (deck.isDeckModified())
     {
         int r = QMessageBox::warning(this, tr("&Deck"),
-                                     tr("The deck has been modified.\n"
-                                        "Do you want to save your changes?"),
+                                           tr("The deck has been modified.\n"
+                                            "Do you want to save your changes?"),
                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
         if (r == QMessageBox::Cancel)
         {
             return false;
+        }
+        else if (r == QMessageBox::Yes)
+        {
+            if(saveFile()) return true;
+            else return false;
         }
     }
     return true;
@@ -63,17 +71,63 @@ void MainWindow::setCurrentFile(const QString &fileName) {
 }
 
 void MainWindow::openFile() {
-    if (okToContinue() == false) {
+    if (!okToClose()) {
         return;
     }
 
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open a deck"), ".", tr("*.txt"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open a deck"), ".", tr("*.fc"));
     if (!fileName.isEmpty()) {
+        if (!fileName.endsWith(".fc")){
+            QMessageBox::warning(this, tr("Open Warning"),
+                                       tr("Incorrect file format\n"), QMessageBox::Ok);
+
+        }
         bool success = deck.Open(fileName);
         if (success) {
+            setCurrentFile(fileName);
             updateDisplayWindow();
         }
     }
+}
+
+bool MainWindow::saveFile() {
+
+    bool success = true;
+    if (!currentFileName.isEmpty()){
+        if (!deck.Save(currentFileName)){
+            QMessageBox::warning(this, tr("Save"),
+                                 tr("Deck could not be saved.\n"
+                                 "Please try again later"), QMessageBox::Ok);
+            success = false;
+        }
+    }
+    else {
+        success = saveAsFile();
+    }
+    return success;
+}
+
+bool MainWindow::saveAsFile(){
+
+    bool success = true;
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Save Deck"), ".",
+                                                    tr("flashcards (*.fc)"));
+    if (!fileName.isEmpty()){
+        if (!fileName.endsWith(".fc")){
+            fileName.append(".fc");
+        }
+        if (deck.Save(fileName)){
+            setCurrentFile(fileName);
+        }
+        else{
+            QMessageBox::warning(this, tr("Save"),
+                                       tr("Deck could not be saved.\n"
+                                       "Please try again later"), QMessageBox::Ok);
+            success = false;
+        }
+    }
+    return success;
 }
 
 /* Function to update the list of cards on Main Window
@@ -118,3 +172,12 @@ void MainWindow::resizeEvent(QResizeEvent* event) {
     QMainWindow::resizeEvent(event);
     display();
 }
+
+void MainWindow::closeEvent (QCloseEvent *event){
+    if (okToClose()) {
+            event->accept();
+    }
+    else event->ignore();
+}
+
+
