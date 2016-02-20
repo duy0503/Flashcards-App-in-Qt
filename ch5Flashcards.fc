@@ -1,0 +1,28 @@
+{"Deck":[	
+		{"question":"What is the most widely used approach to agile software development?",
+		"answer":"Extreme Programming (XP)",
+		"keywords":"Agile, Approach"
+		},
+		{		
+		"question":"What does a well-designed agile process do to the cost of change curve?",
+		"answer":"It \"flattens\" it",
+		"keywords":"Agile, Process, Cost"
+		},
+		{
+		"question":"How many agility principles are there?",
+		"answer":"12",
+		"keywords":"Principles"
+		},
+		{
+		"question": "what are the four framework activities of the XP process?",
+		"answer": "Planning, design, coding, and testing",
+		"keywords": "Framework Activities, XP"
+		},
+		{
+		"question": "Which agile software development method did Jeff Sutherland create?",
+		"answer": "Scrum",
+		"keywords": "Jeff Sutherland"
+		}
+	]
+}
+
