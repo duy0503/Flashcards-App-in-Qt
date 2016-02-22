@@ -94,8 +94,7 @@ typedef class Flashcard : public QWidget {
 
 private slots:
     void showCard();
-
-
+    void on_editButton_clicked();
 } Flashcard;
 
 #endif // FLASHCARD_H
