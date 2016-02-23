@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui_flashcard.h"
 #include <QtGui>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle(tr("Flashcards"));
     ScrollAreaLayout = new QGridLayout();
     ui->TestYourselfButton->hide();
+    currentFileName = "";
 }
 
 MainWindow::~MainWindow() {
@@ -49,7 +51,7 @@ void MainWindow::on_actionSave_As_triggered()
 bool MainWindow::okToClose() {
     if (deck.isDeckModified())
     {
-        int r = QMessageBox::warning(this, tr("&Deck"),
+        int r = QMessageBox::warning(this, tr("Warning!"),
                                            tr("The deck has been modified.\n"
                                             "Do you want to save your changes?"),
                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
@@ -78,7 +80,7 @@ void MainWindow::openFile() {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open a deck"), ".", tr("*.fc"));
     if (!fileName.isEmpty()) {
         if (!fileName.endsWith(".fc")){
-            QMessageBox::warning(this, tr("Open Warning"),
+            QMessageBox::warning(this, tr("Warning!"),
                                        tr("Incorrect file format\n"), QMessageBox::Ok);
 
         }
@@ -127,6 +129,7 @@ bool MainWindow::saveAsFile(){
             success = false;
         }
     }
+    updateWindowTiltle();
     return success;
 }
 
@@ -134,6 +137,7 @@ bool MainWindow::saveAsFile(){
    after loading a deck
 */
 void MainWindow::updateDisplayWindow(){
+    updateWindowTiltle();
     clearScrollArea();
     display();
 }
@@ -147,8 +151,11 @@ void MainWindow::display() {
     foreach (card, deck.deck_) {
         int row = total / columns;
         int column = total % columns;
+        QPushButton * editButton = new QPushButton;
+        editButton = card->ui->editButton;
         card->keywordsButton->setMinimumHeight(columns*50 + 50);
         ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
+        QObject::connect(editButton, SIGNAL(clicked(bool)), this, SLOT(setDeckModified()));
         total++;
     }
 
@@ -180,4 +187,10 @@ void MainWindow::closeEvent (QCloseEvent *event){
     else event->ignore();
 }
 
-
+void MainWindow::setDeckModified(){
+    deck.setDeckModified();
+}
+void MainWindow::updateWindowTiltle(){
+    QString windowTitle = currentFileName + " - Flashcards";
+    this->setWindowTitle(windowTitle);
+}

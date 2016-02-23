@@ -61,6 +61,8 @@ void Flashcard::showCard() {
 
 
 void Flashcard::on_editButton_clicked() {
+
+    this->hide();
     qDebug("edited");
     QDialog dialog(this);
     // Use a layout allowing to have a label next to each field
@@ -94,4 +96,5 @@ void Flashcard::on_editButton_clicked() {
         this->setAnswer(answerField->toPlainText());
         this->setKeywords(keywordsField->text());
     }
+    this->show();
 }

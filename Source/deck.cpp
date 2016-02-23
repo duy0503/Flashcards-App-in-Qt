@@ -1,9 +1,6 @@
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
-#include <QObject>
-#include <deck.h>
 
+#include <deck.h>
+#include <ui_flashcard.h>
 
 Deck::Deck(){
     deckModified_ = false;
@@ -32,6 +29,10 @@ bool Deck::Open(const QString &fileName) {
         newcard->setQuestion(obj["question"].toString());
         newcard->setAnswer(obj["answer"].toString());
         newcard->setKeywords(obj["keywords"].toString());
+        //QPushButton *bt = new QPushButton;
+        //bt = newcard->ui->editButton;
+        //QObject::connect( bt, SIGNAL(contentChanged()), this, SLOT(setDeckModified()));
+        //newcard->ui->QuestionLabel->setText("Hello");
     }
     return true;
 }
@@ -76,4 +77,7 @@ bool Deck::Save(const QString &fileName) {
     return true;
 }
 
+void Deck::setDeckModified(){
+    deckModified_ = true;
+}
 

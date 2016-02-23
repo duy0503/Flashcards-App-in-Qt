@@ -5,6 +5,10 @@
 #include <QTextStream>  // QTextStream
 #include <QString>      // QString
 #include <QList>        // QList
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QObject>
 #include <flashcard.h>  // Flashcard class
 
 typedef struct Deck {
@@ -41,6 +45,7 @@ typedef struct Deck {
      */
     void Clear();
 
+    void setDeckModified();
    private:
     bool deckModified_;
 } Deck;

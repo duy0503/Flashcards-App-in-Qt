@@ -9,13 +9,19 @@ namespace Ui {
 class Flashcard;
 }
 
+
 typedef class Flashcard : public QWidget {
     Q_OBJECT
 
   public:
+
     /**
-     * @brief Getter function for question_.
-     * @return A QString which is a copy of question_.
+     * @brief The flashcard's graphical components.
+     */
+    Ui::Flashcard *ui;
+    /**
+     * @brief getter function for question_
+     * @return A Qstring which is a copy of question_
      */
     QString getQuestion();
 
@@ -86,11 +92,6 @@ typedef class Flashcard : public QWidget {
      * @todo Make this a QList of QStrings
      */
     QString keywords_;
-
-    /**
-     * @brief The flashcard's graphical components.
-     */
-    Ui::Flashcard *ui;
 
 private slots:
     void showCard();

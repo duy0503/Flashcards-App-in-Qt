@@ -68,10 +68,11 @@ class MainWindow : public QMainWindow {
     bool saveAsFile();
     void display();
     void updateDisplayWindow();
+    void updateWindowTiltle();
     void clearScrollArea();
     void resizeEvent(QResizeEvent* event);
 
-  protected:
+  //protected:
     void closeEvent(QCloseEvent *event);
 
   private slots:
@@ -80,6 +81,7 @@ class MainWindow : public QMainWindow {
     void on_actionSave_triggered();     // triggered whenever the save button is clicked
     void on_actionClose_triggered();    // triggered whenever the close button is clicked
     void on_actionSave_As_triggered();
+    void setDeckModified();
 };
 
 #endif // MAINWINDOW_H
