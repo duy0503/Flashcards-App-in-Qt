@@ -32,11 +32,10 @@ bool Deck::Open(const QString &fileName) {
         newcard->setQuestion(obj["question"].toString());
         newcard->setAnswer(obj["answer"].toString());
         newcard->setKeywords(obj["keywords"].toString());
-        //QObject::connect(newcard->flashcardUi->editButton, SIGNAL(clicked(bool)), this, SLOT(setDeckModified()));
-        //connect(newcard->flashcardUi->AnswerLabel, SIGNAL(windowTitleChanged(QString)), this, SLOT(setDeckModified()));
         QObject::connect(newcard, SIGNAL(contextChanged()), this, SLOT(setDeckModified()));
 
     }
+    deckModified_ = false;
     return true;
 }
 
