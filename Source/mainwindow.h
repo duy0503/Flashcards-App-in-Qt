@@ -16,7 +16,7 @@ class MainWindow;
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
-  public:
+public:
     /**
      * @brief Constructor for MainWindow.
      * @param parent is a pointer to MainWindow's parent.
@@ -28,7 +28,7 @@ class MainWindow : public QMainWindow {
      */
     ~MainWindow();
 
-  private:
+private:
     /**
      * @brief MainWindow's graphical components.
      */
@@ -72,16 +72,15 @@ class MainWindow : public QMainWindow {
     void clearScrollArea();
     void resizeEvent(QResizeEvent* event);
 
-  //protected:
+protected:
     void closeEvent(QCloseEvent *event);
 
-  private slots:
+private slots:
     void on_actionNew_triggered();      // triggered whenever the new button is clicked
     void on_actionOpen_triggered();     // triggered whenever the open button is clicked
     void on_actionSave_triggered();     // triggered whenever the save button is clicked
     void on_actionClose_triggered();    // triggered whenever the close button is clicked
-    void on_actionSave_As_triggered();
-    void setDeckModified();
+    void on_actionSave_As_triggered();  // triggered whenever the save as button is clicked
 };
 
 #endif // MAINWINDOW_H

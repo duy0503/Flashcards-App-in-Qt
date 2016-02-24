@@ -13,12 +13,12 @@ class Flashcard;
 typedef class Flashcard : public QWidget {
     Q_OBJECT
 
-  public:
+public:
 
     /**
      * @brief The flashcard's graphical components.
      */
-    Ui::Flashcard *ui;
+    Ui::Flashcard *flashcardUi;
     /**
      * @brief getter function for question_
      * @return A Qstring which is a copy of question_
@@ -76,7 +76,7 @@ typedef class Flashcard : public QWidget {
      */
     ~Flashcard();
 
-  private:
+private:
     /**
      * @brief A QString which holds the flashcard's question.
      */

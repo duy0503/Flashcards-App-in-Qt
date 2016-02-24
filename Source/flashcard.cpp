@@ -1,6 +1,5 @@
 #include "flashcard.h"
 #include "ui_flashcard.h"
-#include <QDebug>
 #include <QDialog>
 #include <QFormLayout>
 #include <QLineEdit>
@@ -12,7 +11,7 @@ QString Flashcard::getQuestion() {
 
 void Flashcard::setQuestion(QString question) {
     question_ = question;
-    ui->QuestionLabel->setText(question);
+    flashcardUi->QuestionLabel->setText(question);
 }
 
 QString Flashcard::getAnswer() {
@@ -21,7 +20,7 @@ QString Flashcard::getAnswer() {
 
 void Flashcard::setAnswer(QString answer) {
     answer_ = answer;
-    ui->AnswerLabel->setText(answer);
+    flashcardUi->AnswerLabel->setText(answer);
 }
 
 void Flashcard::setKeywords(QString keywords){
@@ -44,15 +43,15 @@ QString Flashcard::getKeywords(){
 
 Flashcard::Flashcard(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Flashcard)
+    flashcardUi(new Ui::Flashcard)
 {
-    ui->setupUi(this);
+    flashcardUi->setupUi(this);
     keywordsButton = new QPushButton(this);
 }
 
 Flashcard::~Flashcard() {
     delete keywordsButton;
-    delete ui;
+    delete flashcardUi;
 }
 
 void Flashcard::showCard() {
@@ -63,7 +62,6 @@ void Flashcard::showCard() {
 void Flashcard::on_editButton_clicked() {
 
     this->hide();
-    qDebug("edited");
     QDialog dialog(this);
     // Use a layout allowing to have a label next to each field
     QFormLayout form(&dialog);

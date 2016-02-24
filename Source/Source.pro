@@ -14,12 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    deck.cpp \
-    flashcard.cpp
+    flashcard.cpp \
+    deck.cpp
 
 HEADERS  += mainwindow.h \
-    deck.h \
-    flashcard.h
+    flashcard.h \
+    deck.h
 
 FORMS    += mainwindow.ui \
     flashcard.ui

@@ -52,8 +52,8 @@ bool MainWindow::okToClose() {
     if (deck.isDeckModified())
     {
         int r = QMessageBox::warning(this, tr("Warning!"),
-                                           tr("The deck has been modified.\n"
-                                            "Do you want to save your changes?"),
+                                     tr("The deck has been modified.\n"
+                                        "Do you want to save your changes?"),
                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
         if (r == QMessageBox::Cancel)
         {
@@ -81,7 +81,7 @@ void MainWindow::openFile() {
     if (!fileName.isEmpty()) {
         if (!fileName.endsWith(".fc")){
             QMessageBox::warning(this, tr("Warning!"),
-                                       tr("Incorrect file format\n"), QMessageBox::Ok);
+                                 tr("Incorrect file format\n"), QMessageBox::Ok);
 
         }
         bool success = deck.Open(fileName);
@@ -99,7 +99,7 @@ bool MainWindow::saveFile() {
         if (!deck.Save(currentFileName)){
             QMessageBox::warning(this, tr("Save"),
                                  tr("Deck could not be saved.\n"
-                                 "Please try again later"), QMessageBox::Ok);
+                                    "Please try again later"), QMessageBox::Ok);
             success = false;
         }
     }
@@ -124,8 +124,8 @@ bool MainWindow::saveAsFile(){
         }
         else{
             QMessageBox::warning(this, tr("Save"),
-                                       tr("Deck could not be saved.\n"
-                                       "Please try again later"), QMessageBox::Ok);
+                                 tr("Deck could not be saved.\n"
+                                    "Please try again later"), QMessageBox::Ok);
             success = false;
         }
     }
@@ -150,12 +150,9 @@ void MainWindow::display() {
 
     foreach (card, deck.deck_) {
         int row = total / columns;
-        int column = total % columns;
-        QPushButton * editButton = new QPushButton;
-        editButton = card->ui->editButton;
+        int column = total % columns;;
         card->keywordsButton->setMinimumHeight(columns*50 + 50);
         ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
-        QObject::connect(editButton, SIGNAL(clicked(bool)), this, SLOT(setDeckModified()));
         total++;
     }
 
@@ -182,14 +179,11 @@ void MainWindow::resizeEvent(QResizeEvent* event) {
 
 void MainWindow::closeEvent (QCloseEvent *event){
     if (okToClose()) {
-            event->accept();
+        event->accept();
     }
     else event->ignore();
 }
 
-void MainWindow::setDeckModified(){
-    deck.setDeckModified();
-}
 void MainWindow::updateWindowTiltle(){
     QString windowTitle = currentFileName + " - Flashcards";
     this->setWindowTitle(windowTitle);

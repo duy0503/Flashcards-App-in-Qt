@@ -1,19 +1,18 @@
-#ifndef DECK_H
-#define DECK_H
+#ifndef DECK1_H
+#define DECK1_H
 
 #include <QFile>        // QFile
 #include <QTextStream>  // QTextStream
 #include <QString>      // QString
 #include <QList>        // QList
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
 #include <QObject>
 #include <flashcard.h>  // Flashcard class
 
-typedef struct Deck {
-  public:
-    Deck();
+class Deck : public QObject
+{
+    Q_OBJECT
+public:
+    explicit Deck(QObject *parent = 0);
     /**
      * @brief A QList which stores pointers to Flashcards.
      * @todo Make this private.
@@ -45,9 +44,12 @@ typedef struct Deck {
      */
     void Clear();
 
-    void setDeckModified();
-   private:
+private:
     bool deckModified_;
-} Deck;
+signals:
 
-#endif // DECK_H
+public slots:
+    void setDeckModified();
+};
+
+#endif // DECK1_H
