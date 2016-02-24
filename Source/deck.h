@@ -8,8 +8,7 @@
 #include <QObject>
 #include <flashcard.h>  // Flashcard class
 
-class Deck : public QObject
-{
+class Deck : public QObject{
     Q_OBJECT
 public:
     explicit Deck(QObject *parent = 0);

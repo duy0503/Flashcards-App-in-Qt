@@ -92,7 +92,8 @@ private:
      * @todo Make this a QList of QStrings
      */
     QString keywords_;
-
+signals:
+    void contextChanged();
 private slots:
     void showCard();
     void on_editButton_clicked();

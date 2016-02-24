@@ -32,14 +32,16 @@ bool Deck::Open(const QString &fileName) {
         newcard->setQuestion(obj["question"].toString());
         newcard->setAnswer(obj["answer"].toString());
         newcard->setKeywords(obj["keywords"].toString());
-        QObject::connect(newcard->flashcardUi->editButton, SIGNAL(clicked(bool)), this, SLOT(setDeckModified()));
+        //QObject::connect(newcard->flashcardUi->editButton, SIGNAL(clicked(bool)), this, SLOT(setDeckModified()));
+        //connect(newcard->flashcardUi->AnswerLabel, SIGNAL(windowTitleChanged(QString)), this, SLOT(setDeckModified()));
+        QObject::connect(newcard, SIGNAL(contextChanged()), this, SLOT(setDeckModified()));
 
     }
     return true;
 }
 
-void Deck::Clear()
-{
+void Deck::Clear(){
+
     foreach(Flashcard *card, deck_)
     {
         delete card;
@@ -47,8 +49,7 @@ void Deck::Clear()
     deck_.clear();
 }
 
-bool Deck::isDeckModified()
-{
+bool Deck::isDeckModified(){
     return deckModified_;
 }
 

@@ -5,6 +5,8 @@
 #include <QLineEdit>
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
+#include "deck.h"
+
 QString Flashcard::getQuestion() {
     return question_;
 }
@@ -90,9 +92,30 @@ void Flashcard::on_editButton_clicked() {
 
     // Show the dialog as modal
     if (dialog.exec() == QDialog::Accepted) {
-        this->setQuestion(questionField->toPlainText());
-        this->setAnswer(answerField->toPlainText());
-        this->setKeywords(keywordsField->text());
+
+        /**
+         * Update question, answer, and keywords if user modified them.
+         * Then signal contextChanged() to let the Deck knows that it has been modified
+         */
+        bool isContextChanged = false;
+        if (questionField->toPlainText() != this->getQuestion()) {
+            this->setQuestion(questionField->toPlainText());
+            isContextChanged = true;
+        }
+
+        if (answerField->toPlainText() != this->getAnswer()) {
+            this->setAnswer(answerField->toPlainText());
+            isContextChanged = true;
+        }
+
+        if (keywordsField->text() != this->getKeywords()) {
+            this->setKeywords(keywordsField->text());
+            isContextChanged = true;
+        }
+
+        if (isContextChanged) {
+            emit contextChanged();
+        }
     }
     this->show();
 }
