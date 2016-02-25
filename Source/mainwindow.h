@@ -68,7 +68,7 @@ private:
     bool saveAsFile();
     void display();
     void updateDisplayWindow();
-    void updateWindowTiltle();
+    void updateWindowTitle();
     void clearScrollArea();
     void resizeEvent(QResizeEvent* event);
 

@@ -129,7 +129,7 @@ bool MainWindow::saveAsFile(){
             success = false;
         }
     }
-    updateWindowTiltle();
+    updateWindowTitle();
     return success;
 }
 
@@ -137,7 +137,7 @@ bool MainWindow::saveAsFile(){
    after loading a deck
 */
 void MainWindow::updateDisplayWindow(){
-    updateWindowTiltle();
+    updateWindowTitle();
     clearScrollArea();
     display();
 }
@@ -184,7 +184,7 @@ void MainWindow::closeEvent (QCloseEvent *event){
     else event->ignore();
 }
 
-void MainWindow::updateWindowTiltle(){
+void MainWindow::updateWindowTitle(){
     QString windowTitle = currentFileName + " - Flashcards";
     this->setWindowTitle(windowTitle);
 }
