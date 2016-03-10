@@ -188,3 +188,9 @@ void MainWindow::updateWindowTitle(){
     QString windowTitle = currentFileName + " - Flashcards";
     this->setWindowTitle(windowTitle);
 }
+
+void MainWindow::on_AddNewCardButton_clicked()
+{
+    deck.addnewcard();
+    display();
+}
