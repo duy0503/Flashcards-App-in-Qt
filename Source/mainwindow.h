@@ -81,6 +81,7 @@ private slots:
     void on_actionSave_triggered();     // triggered whenever the save button is clicked
     void on_actionClose_triggered();    // triggered whenever the close button is clicked
     void on_actionSave_As_triggered();  // triggered whenever the save as button is clicked
+    void on_AddNewCardButton_clicked(); //triggered whenever the add new card button is clicked
 };
 
 #endif // MAINWINDOW_H
