@@ -3,6 +3,12 @@
 #include <QJsonObject>
 #include <QObject>
 #include <ui_flashcard.h>
+#include "flashcard.h"
+#include <QDialog>
+#include <QFormLayout>
+#include <QLineEdit>
+#include <QPlainTextEdit>
+#include <QDialogButtonBox>
 #include "deck.h"
 
 Deck::Deck(QObject *parent) : QObject(parent){
@@ -80,4 +86,61 @@ bool Deck::Save(const QString &fileName) {
 
 void Deck::setDeckModified(){
     deckModified_ = true;
+}
+void Deck::addnewcard(){
+    Flashcard* newcard = new Flashcard;
+    deck_.append(newcard);
+    newcard->getKeywords();
+
+
+    QDialog dialog(newcard);
+    // Use a layout allowing to have a label next to each field
+    QFormLayout form(&dialog);
+
+    // Add some text above the fields
+    form.addRow(new QLabel("Question"));
+    QPlainTextEdit* questionField = new QPlainTextEdit();
+    form.addRow(questionField);
+
+    form.addRow(new QLabel("Answer"));
+    QPlainTextEdit* answerField = new QPlainTextEdit();
+    form.addRow(answerField);
+
+    form.addRow(new QLabel("Keywords"));
+    QLineEdit* keywordsField = new QLineEdit();
+    form.addRow(keywordsField);
+
+
+
+    // Add some standard buttons (Cancel/Ok) at the bottom of the dialog
+    QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+                               Qt::Horizontal, &dialog);
+    form.addRow(&buttonBox);
+    QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+    QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+    // Show the dialog as modal
+    if (dialog.exec() == QDialog::Accepted) {
+
+        /**
+         * Update question, answer, and keywords if user modified them.
+         * Then signal contextChanged() to let the Deck knows that it has been modified
+         */
+        bool isContextChanged = false;
+        if (questionField->toPlainText() != newcard->getQuestion()) {
+            newcard->setQuestion(questionField->toPlainText());
+            isContextChanged = true;
+        }
+
+        if (answerField->toPlainText() != newcard->getAnswer()) {
+            newcard->setAnswer(answerField->toPlainText());
+            isContextChanged = true;
+        }
+
+        if (keywordsField->text() != newcard->getKeywords()) {
+            newcard->setKeywords(keywordsField->text());
+            isContextChanged = true;
+        }
+
+
 }
