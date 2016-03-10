@@ -42,6 +42,7 @@ public:
      * @brief Clears the deck_ of all its contents.
      */
     void Clear();
+    void addnewcard();
 
 private:
     bool deckModified_;
