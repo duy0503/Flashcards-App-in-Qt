@@ -47,7 +47,7 @@ public:
 private:
     bool deckModified_;
 signals:
-
+    void contextChanged();
 public slots:
     void setDeckModified();
 };
