@@ -97,6 +97,7 @@ signals:
 private slots:
     void showCard();
     void on_editButton_clicked();
+    void on_deleteButton_clicked();
 } Flashcard;
 
 #endif // FLASHCARD_H

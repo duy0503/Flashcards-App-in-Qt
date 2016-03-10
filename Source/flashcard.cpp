@@ -5,6 +5,7 @@
 #include <QLineEdit>
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
+#include <QMessageBox>
 #include "deck.h"
 
 QString Flashcard::getQuestion() {
@@ -118,4 +119,19 @@ void Flashcard::on_editButton_clicked() {
         }
     }
     this->show();
+}
+
+void Flashcard::on_deleteButton_clicked()
+{
+    int r = QMessageBox::warning(this, tr("Warning!"),
+                                 tr("Are you sure you wish to delete this flashcard?"),
+                                 QMessageBox::Ok | QMessageBox::Cancel);
+    if (r == QMessageBox::Cancel)
+    {
+        return;
+    }
+    else if (r == QMessageBox::Ok)
+    {
+        delete this;
+    }
 }
