@@ -3,13 +3,13 @@
 #include <QJsonObject>
 #include <QObject>
 #include <ui_flashcard.h>
-#include "flashcard.h"
 #include <QDialog>
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
 #include "deck.h"
+#include "flashcard.h"
 
 Deck::Deck(QObject *parent) : QObject(parent){
     deckModified_ = false;
@@ -88,9 +88,9 @@ void Deck::setDeckModified(){
     deckModified_ = true;
 }
 void Deck::addnewcard(){
+
     Flashcard* newcard = new Flashcard;
-    deck_.append(newcard);
-    newcard->getKeywords();
+    newcard->setKeywords("");
 
 
     QDialog dialog(newcard);
@@ -123,8 +123,8 @@ void Deck::addnewcard(){
     if (dialog.exec() == QDialog::Accepted) {
 
         /**
-         * Update question, answer, and keywords if user modified them.
-         * Then signal contextChanged() to let the Deck knows that it has been modified
+         * Update question, answer, and keywords
+         * Then add the new card to deck and set deckModified_ to true
          */
         bool isContextChanged = false;
         if (questionField->toPlainText() != newcard->getQuestion()) {
@@ -142,6 +142,10 @@ void Deck::addnewcard(){
             isContextChanged = true;
         }
 
+        if ( isContextChanged ){
+            deck_.push_front(newcard);
+            deckModified_ = true;
+        }
 
-}
+    }
 }
