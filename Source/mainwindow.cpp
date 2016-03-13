@@ -26,7 +26,15 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_actionNew_triggered()
 {
-
+	if( okToClose() )
+    {
+       //Deck newDeck;
+       deck.Clear();
+       currentFileName = "";
+       updateDisplayWindow();
+    }
+    else
+        return;
 }
 
 void MainWindow::on_actionOpen_triggered() {
