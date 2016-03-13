@@ -87,7 +87,7 @@ bool Deck::Save(const QString &fileName) {
 void Deck::setDeckModified(){
     deckModified_ = true;
 }
-void Deck::addnewcard(){
+void Deck::addNewCard(){
 
     Flashcard* newcard = new Flashcard;
     newcard->setKeywords("");

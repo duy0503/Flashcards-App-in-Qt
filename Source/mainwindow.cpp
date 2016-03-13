@@ -191,6 +191,6 @@ void MainWindow::updateWindowTitle(){
 
 void MainWindow::on_AddNewCardButton_clicked()
 {
-    deck.addnewcard();
+    deck.addNewCard();
     display();
 }
