@@ -93,7 +93,7 @@ private:
      */
     QString keywords_;
 signals:
-    void contextChanged();
+    void contextChanged(bool changed);
 private slots:
     void showCard();
     void on_editButton_clicked();

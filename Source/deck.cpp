@@ -38,10 +38,10 @@ bool Deck::Open(const QString &fileName) {
         newcard->setQuestion(obj["question"].toString());
         newcard->setAnswer(obj["answer"].toString());
         newcard->setKeywords(obj["keywords"].toString());
-        QObject::connect(newcard, SIGNAL(contextChanged()), this, SLOT(setDeckModified()));
+        QObject::connect(newcard, SIGNAL(contextChanged(bool)), this, SLOT(setDeckModified(bool)));
 
     }
-    deckModified_ = false;
+    setDeckModified(false);
     return true;
 }
 
@@ -80,12 +80,12 @@ bool Deck::Save(const QString &fileName) {
     QJsonDocument saveDeck(deckObj);
     file.write(saveDeck.toJson());
     file.close();
-    deckModified_ = false;
+    setDeckModified(false);
     return true;
 }
 
-void Deck::setDeckModified(){
-    deckModified_ = true;
+void Deck::setDeckModified(bool modified){
+    deckModified_ = modified;
 }
 void Deck::addNewCard(){
 
@@ -144,7 +144,7 @@ void Deck::addNewCard(){
 
         if ( isContextChanged ){
             deck_.push_front(newcard);
-            deckModified_ = true;
+            setDeckModified(true);
         }
 
     }

@@ -31,6 +31,7 @@ void MainWindow::on_actionNew_triggered()
        //Deck newDeck;
        deck.Clear();
        currentFileName = "";
+       deck.setDeckModified(false);
        updateDisplayWindow();
     }
     else

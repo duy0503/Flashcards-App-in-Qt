@@ -49,7 +49,7 @@ private:
 signals:
 
 public slots:
-    void setDeckModified();
+    void setDeckModified(bool modified);
 };
 
 #endif // DECK1_H

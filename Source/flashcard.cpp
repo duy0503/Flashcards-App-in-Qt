@@ -115,7 +115,7 @@ void Flashcard::on_editButton_clicked() {
         }
 
         if (isContextChanged) {
-            emit contextChanged();
+            emit contextChanged(true);
         }
     }
     this->show();
