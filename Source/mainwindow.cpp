@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle(tr("Flashcards"));
     ScrollAreaLayout = new QGridLayout();
-    ui->TestYourselfButton->hide();
+    //ui->TestYourselfButton->hide();
     currentFileName = "";
 }
 
@@ -153,14 +153,13 @@ void MainWindow::updateDisplayWindow(){
 
 /* Function to display the list of cards on Main Window */
 void MainWindow::display() {
-    int columns = qMax(this->size().width(), 600) / 600;
+    int columns = qMax( (this->size().width() - 32) / (432 + 24), 1 ); // 32 for the window border, 20 for the spacing between each card
     Flashcard* card;
     int total = 0;
 
     foreach (card, deck.deck_) {
         int row = total / columns;
-        int column = total % columns;;
-        card->keywordsButton->setMinimumHeight(columns*50 + 50);
+        int column = total % columns;
         ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
         total++;
     }

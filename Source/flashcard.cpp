@@ -29,13 +29,13 @@ void Flashcard::setAnswer(QString answer) {
 void Flashcard::setKeywords(QString keywords){
     keywords_ = keywords;
     this->setWindowTitle(keywords_);
-    keywordsButton->setMinimumWidth(200);
-    keywordsButton->setMinimumHeight(100);
     keywordsButton->setText(keywords);
-    QFont font = keywordsButton->font();
-    font.setPointSize(15);
-    keywordsButton->setFont(font);
-    keywordsButton->setStyleSheet("background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffff99, stop: 1 #ffff00)");
+    keywordsButton->setFixedSize(432, 270);
+    // QFont font = keywordsButton->font();
+    // font.setPointSize(15);
+    // keywordsButton->setFont(font);
+
+    keywordsButton->setStyleSheet("font-size: 24pt; border-image: url(:/index.png);");
     QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 

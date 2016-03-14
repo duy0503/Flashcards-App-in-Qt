@@ -27,3 +27,6 @@ FORMS    += mainwindow.ui \
 DISTFILES += \
     FlashcardForm.ui.qml \
     Flashcard.qml
+
+RESOURCES += \
+    ../Resources/png.qrc

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>500</height>
+    <width>462</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -125,6 +125,9 @@ QScrollBar {
 }</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -156,8 +159,8 @@ QScrollBar {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>633</width>
-            <height>336</height>
+            <width>445</width>
+            <height>313</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -445,7 +448,7 @@ QScrollBar {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>650</width>
+     <width>462</width>
      <height>27</height>
     </rect>
    </property>
