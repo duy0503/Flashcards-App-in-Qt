@@ -71,6 +71,10 @@ public:
      */
     QStringList getKeywordsList();
 
+    /**
+     * @brief Update keywordsList_ when keywords_ is changed.
+     * @param keywords
+     */
     void updateKeywordsList(QString keywords);
     /**
      * @brief Constructor for Flashcard
@@ -83,6 +87,12 @@ public:
      * @todo Make this private.
      */
     QPushButton *keywordsButton;
+
+    /**
+     * @brief create a form for user to edit the flashcard
+     * @return true if the card is modified. Otherwise return false
+     */
+    bool createFormToEditCard();
 
     /**
      * @brief Destructor for Flashcard.
@@ -102,7 +112,6 @@ private:
 
     /**
      * @brief A QString which holds the flashcard's keywords, separated by commas.
-     * @todo Make this a QList of QStrings
      */
     QString keywords_;
 

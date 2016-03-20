@@ -90,6 +90,17 @@ void Flashcard::showCard() {
 void Flashcard::on_editButton_clicked() {
 
     this->hide();
+
+    // if question, or answer, or keywords gets modified
+    if ( createFormToEditCard() == true){
+        emit contextChanged(true);  // this will trigger function setDeckModified in deck.cpp
+    }
+
+    this->show();
+}
+
+bool Flashcard::createFormToEditCard(){
+
     QDialog dialog(this);
     // Use a layout allowing to have a label next to each field
     QFormLayout form(&dialog);
@@ -116,14 +127,13 @@ void Flashcard::on_editButton_clicked() {
     QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
     QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
 
+    bool isContextChanged = false;
     // Show the dialog as modal
     if (dialog.exec() == QDialog::Accepted) {
 
         /**
          * Update question, answer, and keywords if user modified them.
-         * Then signal contextChanged() to let the Deck knows that it has been modified
          */
-        bool isContextChanged = false;
         if (questionField->toPlainText() != this->getQuestion()) {
             this->setQuestion(questionField->toPlainText());
             isContextChanged = true;
@@ -140,11 +150,9 @@ void Flashcard::on_editButton_clicked() {
             isContextChanged = true;
         }
 
-        if (isContextChanged) {
-            emit contextChanged(true);
-        }
     }
-    this->show();
+    return isContextChanged;
+
 }
 
 void Flashcard::on_deleteButton_clicked()
