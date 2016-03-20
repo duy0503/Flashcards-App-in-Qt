@@ -6,6 +6,7 @@
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
 #include <QMessageBox>
+#include <QDebug>
 #include "deck.h"
 
 QString Flashcard::getQuestion() {
@@ -39,7 +40,7 @@ void Flashcard::setKeywords(QString keywords){
     QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 
-void Flashcard::setKeywordsList(QStringList &list){
+void Flashcard::setKeywordsList(const QStringList &list){
     keywordsList_ = list;
     QString keywords = "";
     for ( int index = 0; index < list.size()-1; index++){
@@ -48,6 +49,15 @@ void Flashcard::setKeywordsList(QStringList &list){
     }
     keywords.append(list[list.size()-1]);
     setKeywords(keywords);
+}
+
+void Flashcard::updateKeywordsList(QString keywords){
+    QStringList list = keywords.split(',', QString::KeepEmptyParts);
+    keywordsList_.empty();
+    foreach(QString keyword, list){
+        keyword = keyword.trimmed();
+        keywordsList_.append(keyword);
+    }
 }
 
 QStringList Flashcard::getKeywordsList(){
@@ -126,6 +136,7 @@ void Flashcard::on_editButton_clicked() {
 
         if (keywordsField->text() != this->getKeywords()) {
             this->setKeywords(keywordsField->text());
+            this->updateKeywordsList(keywordsField->text());
             isContextChanged = true;
         }
 

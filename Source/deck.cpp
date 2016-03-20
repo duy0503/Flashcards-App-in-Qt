@@ -152,6 +152,7 @@ void Deck::addNewCard(){
 
         if (keywordsField->text() != newcard->getKeywords()) {
             newcard->setKeywords(keywordsField->text());
+            newcard->updateKeywordsList(keywordsField->text());
             isContextChanged = true;
         }
 

@@ -63,7 +63,7 @@ public:
      * @brief setKeywordsList
      * @param a list of keywords, each keyword is a string
      */
-    void setKeywordsList(QStringList &list);
+    void setKeywordsList(const QStringList &list);
 
     /**
      * @brief getKeywordsList
@@ -71,6 +71,7 @@ public:
      */
     QStringList getKeywordsList();
 
+    void updateKeywordsList(QString keywords);
     /**
      * @brief Constructor for Flashcard
      * @param parent is a pointer to the flashcard's parent.
