@@ -14,6 +14,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
+
     ui->setupUi(this);
     this->setWindowTitle(tr("Flashcards"));
     ScrollAreaLayout = new QGridLayout();
@@ -21,42 +22,57 @@ MainWindow::MainWindow(QWidget *parent) :
     currentFileName = "";
 }
 
-MainWindow::~MainWindow() {
+MainWindow::~MainWindow(){
+
     delete ui;
 }
 
-void MainWindow::on_actionNew_triggered()
-{
-	if( okToClose() )
-    {
-       //Deck newDeck;
-       deck.Clear();
-       currentFileName = "";
-       deck.setDeckModified(false);
-       updateDisplayWindow();
-    }
-    else
-        return;
+void MainWindow::on_actionNew_triggered(){
+
+    newFile();
 }
 
-void MainWindow::on_actionOpen_triggered() {
+void MainWindow::on_actionOpen_triggered(){
+
     openFile();
 }
 
-void MainWindow::on_actionSave_triggered()
-{
+void MainWindow::on_actionSave_triggered(){
+
     saveFile();
 }
 
-void MainWindow::on_actionClose_triggered()
-{
+void MainWindow::on_actionClose_triggered(){
+
     QWidget::close();
 }
 
-void MainWindow::on_actionSave_As_triggered()
-{
+void MainWindow::on_actionSave_As_triggered(){
+
     saveAsFile();
 }
+
+void MainWindow::on_AddNewCardButton_clicked()
+{
+    deck.addNewCard();
+    display();
+}
+
+void MainWindow::on_searchButton_clicked()
+{
+        deck.runSearchFeature(ui->searchEdit->text());
+}
+
+void MainWindow::on_searchEdit_editingFinished()
+{
+        deck.runSearchFeature(ui->searchEdit->text());
+}
+
+/*void MainWindow::on_searchEdit_textChanged(const QString &arg1)
+{
+        deck.runSearchFeature(ui->searchEdit->text());
+}
+*/
 
 bool MainWindow::okToClose() {
     if (deck.isDeckModified())
@@ -82,7 +98,19 @@ void MainWindow::setCurrentFile(const QString &fileName) {
     currentFileName = fileName;
 }
 
+void MainWindow::newFile(){
+
+    if( okToClose() ){
+       deck.Clear();
+       currentFileName = "";
+       deck.setDeckModified(false);
+       updateDisplayWindow();
+    }
+
+}
+
 void MainWindow::openFile() {
+
     if (!okToClose()) {
         return;
     }
@@ -147,13 +175,21 @@ bool MainWindow::saveAsFile(){
    after loading a deck
 */
 void MainWindow::updateDisplayWindow(){
+
     updateWindowTitle();
     clearScrollArea();
     display();
 }
 
+void MainWindow::updateWindowTitle(){
+
+    QString windowTitle = currentFileName + " - Flashcards";
+    this->setWindowTitle(windowTitle);
+}
+
 /* Function to display the list of cards on Main Window */
 void MainWindow::display() {
+
     int columns = qMax( (this->size().width() - 32) / (432 + 24), 1 ); // 32 for the window border, 20 for the spacing between each card
     Flashcard* card;
     int total = 0;
@@ -182,40 +218,19 @@ void MainWindow::clearScrollArea(){
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event) {
+
     QMainWindow::resizeEvent(event);
     display();
 }
 
 void MainWindow::closeEvent (QCloseEvent *event){
+
     if (okToClose()) {
         event->accept();
     }
     else event->ignore();
 }
 
-void MainWindow::updateWindowTitle(){
-    QString windowTitle = currentFileName + " - Flashcards";
-    this->setWindowTitle(windowTitle);
-}
 
-void MainWindow::on_AddNewCardButton_clicked()
-{
-    deck.addNewCard();
-    display();
-}
 
-void MainWindow::on_searchButton_clicked()
-{
-        deck.runSearchFeature(ui->searchEdit->text());
-}
 
-void MainWindow::on_searchEdit_editingFinished()
-{
-        deck.runSearchFeature(ui->searchEdit->text());
-}
-
-/*void MainWindow::on_searchEdit_textChanged(const QString &arg1)
-{
-        deck.runSearchFeature(ui->searchEdit->text());
-}
-*/

@@ -60,7 +60,7 @@ private:
      */
     void setCurrentFile(const QString &fileName);
 
-
+    void newFile();
     void openFile();
     bool saveFile();
     bool saveAsFile();

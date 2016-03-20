@@ -15,9 +15,10 @@ Deck::Deck(QObject *parent) : QObject(parent){
     deckModified_ = false;
 }
 
-bool Deck::Open(const QString &fileName) {
+bool Deck::Open(const QString &fileName){
+
     QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly)){
         return false;
     }
 
@@ -38,7 +39,7 @@ bool Deck::Open(const QString &fileName) {
         // get keywords
         QJsonArray keywords = obj["keywords"].toArray();
         QStringList keywordsList;
-        for (int index = 0; index < keywords.size(); ++index) {
+        for (int index = 0; index < keywords.size(); ++index){
             keywordsList.append(keywords[index].toString());
         }
         newcard->setKeywordsList(keywordsList);
@@ -51,24 +52,10 @@ bool Deck::Open(const QString &fileName) {
     return true;
 }
 
-void Deck::Clear(){
-
-    foreach(Flashcard *card, deck_)
-    {
-        delete card;
-    }
-    deck_.clear();
-}
-
-bool Deck::isDeckModified(){
-    return deckModified_;
-}
-
-
-bool Deck::Save(const QString &fileName) {
+bool Deck::Save(const QString &fileName){
 
     QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly)) {
+    if (!file.open(QIODevice::WriteOnly)){
         return false;
     }
 
@@ -96,7 +83,22 @@ bool Deck::Save(const QString &fileName) {
     return true;
 }
 
+void Deck::Clear(){
+
+    foreach(Flashcard *card, deck_)
+    {
+        delete card;
+    }
+    deck_.clear();
+}
+
+bool Deck::isDeckModified(){
+
+    return deckModified_;
+}
+
 void Deck::setDeckModified(bool modified){
+
     deckModified_ = modified;
 }
 
@@ -134,6 +136,7 @@ void Deck::runSearchFeature(QString key){
 }
 
 void Deck::showAllCards(){
+
     foreach(Flashcard* card, deck_){
         card->keywordsButton->show();
     }

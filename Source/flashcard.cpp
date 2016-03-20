@@ -9,25 +9,72 @@
 #include <QDebug>
 #include "deck.h"
 
-QString Flashcard::getQuestion() {
+Flashcard::Flashcard(QWidget *parent) :
+    QWidget(parent),
+    flashcardUi(new Ui::Flashcard){
+
+    flashcardUi->setupUi(this);
+    keywordsButton = new QPushButton(this);
+}
+
+
+Flashcard::~Flashcard(){
+
+    delete keywordsButton;
+    delete flashcardUi;
+}
+
+void Flashcard::on_editButton_clicked(){
+
+    this->hide();
+
+    // if question, or answer, or keywords gets modified
+    if ( createFormToEditCard() == true){
+        emit contextChanged(true);  // this will trigger function setDeckModified in deck.cpp
+    }
+
+    this->show();
+}
+
+void Flashcard::on_deleteButton_clicked(){
+
+    int r = QMessageBox::warning(this, tr("Warning!"),
+                                 tr("Are you sure you wish to delete this flashcard?"),
+                                 QMessageBox::Ok | QMessageBox::Cancel);
+    if (r == QMessageBox::Cancel)
+    {
+        return;
+    }
+    else if (r == QMessageBox::Ok)
+    {
+        delete this;
+    }
+}
+
+QString Flashcard::getQuestion(){
+
     return question_;
 }
 
-void Flashcard::setQuestion(QString question) {
+void Flashcard::setQuestion(QString question){
+
     question_ = question;
     flashcardUi->QuestionLabel->setText(question);
 }
 
-QString Flashcard::getAnswer() {
+QString Flashcard::getAnswer(){
+
     return answer_;
 }
 
-void Flashcard::setAnswer(QString answer) {
+void Flashcard::setAnswer(QString answer){
+
     answer_ = answer;
     flashcardUi->AnswerLabel->setText(answer);
 }
 
 void Flashcard::setKeywords(QString keywords){
+
     keywords_ = keywords;
     this->setWindowTitle(keywords_);
     keywordsButton->setText(keywords);
@@ -40,7 +87,13 @@ void Flashcard::setKeywords(QString keywords){
     QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 
+QString Flashcard::getKeywords(){
+
+    return keywords_;
+}
+
 void Flashcard::setKeywordsList(const QStringList &list){
+
     keywordsList_ = list;
     QString keywords = "";
     for ( int index = 0; index < list.size()-1; index++){
@@ -51,7 +104,13 @@ void Flashcard::setKeywordsList(const QStringList &list){
     setKeywords(keywords);
 }
 
+QStringList Flashcard::getKeywordsList(){
+
+    return keywordsList_;
+}
+
 void Flashcard::updateKeywordsList(QString keywords){
+
     QStringList list = keywords.split(',', QString::KeepEmptyParts);
     keywordsList_.empty();
     foreach(QString keyword, list){
@@ -60,41 +119,7 @@ void Flashcard::updateKeywordsList(QString keywords){
     }
 }
 
-QStringList Flashcard::getKeywordsList(){
-    return keywordsList_;
-}
-
-QString Flashcard::getKeywords(){
-    return keywords_;
-}
-
-
-Flashcard::Flashcard(QWidget *parent) :
-    QWidget(parent),
-    flashcardUi(new Ui::Flashcard)
-{
-    flashcardUi->setupUi(this);
-    keywordsButton = new QPushButton(this);
-}
-
-Flashcard::~Flashcard() {
-    delete keywordsButton;
-    delete flashcardUi;
-}
-
-void Flashcard::showCard() {
-    this->show();
-}
-
-
-void Flashcard::on_editButton_clicked() {
-
-    this->hide();
-
-    // if question, or answer, or keywords gets modified
-    if ( createFormToEditCard() == true){
-        emit contextChanged(true);  // this will trigger function setDeckModified in deck.cpp
-    }
+void Flashcard::showCard(){
 
     this->show();
 }
@@ -155,17 +180,4 @@ bool Flashcard::createFormToEditCard(){
 
 }
 
-void Flashcard::on_deleteButton_clicked()
-{
-    int r = QMessageBox::warning(this, tr("Warning!"),
-                                 tr("Are you sure you wish to delete this flashcard?"),
-                                 QMessageBox::Ok | QMessageBox::Cancel);
-    if (r == QMessageBox::Cancel)
-    {
-        return;
-    }
-    else if (r == QMessageBox::Ok)
-    {
-        delete this;
-    }
-}
+
