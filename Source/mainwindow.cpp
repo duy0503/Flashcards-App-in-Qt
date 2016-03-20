@@ -52,20 +52,21 @@ void MainWindow::on_actionSave_As_triggered(){
     saveAsFile();
 }
 
-void MainWindow::on_AddNewCardButton_clicked()
-{
+void MainWindow::on_AddNewCardButton_clicked(){
+
     deck.addNewCard();
     display();
 }
 
-void MainWindow::on_searchButton_clicked()
-{
-        deck.runSearchFeature(ui->searchEdit->text());
+void MainWindow::on_searchButton_clicked(){
+
+    deck.runSearchFeature(ui->searchEdit->text());
 }
 
-void MainWindow::on_searchEdit_editingFinished()
-{
-        deck.runSearchFeature(ui->searchEdit->text());
+void MainWindow::on_searchEdit_editingFinished(){
+
+    deck.runSearchFeature(ui->searchEdit->text());
+    ui->searchEdit->clearFocus();
 }
 
 /*void MainWindow::on_searchEdit_textChanged(const QString &arg1)
@@ -74,7 +75,8 @@ void MainWindow::on_searchEdit_editingFinished()
 }
 */
 
-bool MainWindow::okToClose() {
+bool MainWindow::okToClose(){
+
     if (deck.isDeckModified())
     {
         int r = QMessageBox::warning(this, tr("Warning!"),
@@ -94,7 +96,8 @@ bool MainWindow::okToClose() {
     return true;
 }
 
-void MainWindow::setCurrentFile(const QString &fileName) {
+void MainWindow::setCurrentFile(const QString &fileName){
+
     currentFileName = fileName;
 }
 
@@ -109,7 +112,7 @@ void MainWindow::newFile(){
 
 }
 
-void MainWindow::openFile() {
+void MainWindow::openFile(){
 
     if (!okToClose()) {
         return;
@@ -130,7 +133,7 @@ void MainWindow::openFile() {
     }
 }
 
-bool MainWindow::saveFile() {
+bool MainWindow::saveFile(){
 
     bool success = true;
     if (!currentFileName.isEmpty()){
