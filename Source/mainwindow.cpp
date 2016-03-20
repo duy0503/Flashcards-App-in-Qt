@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QGridLayout>
 #include <QResizeEvent>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -202,3 +203,19 @@ void MainWindow::on_AddNewCardButton_clicked()
     deck.addNewCard();
     display();
 }
+
+void MainWindow::on_searchButton_clicked()
+{
+        deck.runSearchFeature(ui->searchEdit->text());
+}
+
+void MainWindow::on_searchEdit_editingFinished()
+{
+        deck.runSearchFeature(ui->searchEdit->text());
+}
+
+/*void MainWindow::on_searchEdit_textChanged(const QString &arg1)
+{
+        deck.runSearchFeature(ui->searchEdit->text());
+}
+*/

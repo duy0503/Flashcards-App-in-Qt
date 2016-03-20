@@ -39,6 +39,21 @@ void Flashcard::setKeywords(QString keywords){
     QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 
+void Flashcard::setKeywordsList(QStringList &list){
+    keywordsList_ = list;
+    QString keywords = "";
+    for ( int index = 0; index < list.size()-1; index++){
+        keywords.append(list[index]);
+        keywords.append(", ");
+    }
+    keywords.append(list[list.size()-1]);
+    setKeywords(keywords);
+}
+
+QStringList Flashcard::getKeywordsList(){
+    return keywordsList_;
+}
+
 QString Flashcard::getKeywords(){
     return keywords_;
 }

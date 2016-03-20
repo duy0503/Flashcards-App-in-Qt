@@ -42,7 +42,15 @@ public:
      * @brief Clears the deck_ of all its contents.
      */
     void Clear();
+
+    /**
+     * @brief Add a new flashcard to the deck
+     */
     void addNewCard();
+
+    void runSearchFeature(QString key);
+
+    void showAllCards();
 
 private:
     bool deckModified_;

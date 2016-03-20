@@ -60,6 +60,18 @@ public:
     void setKeywords(QString keywords);
 
     /**
+     * @brief setKeywordsList
+     * @param a list of keywords, each keyword is a string
+     */
+    void setKeywordsList(QStringList &list);
+
+    /**
+     * @brief getKeywordsList
+     * @return return keywordsList_
+     */
+    QStringList getKeywordsList();
+
+    /**
      * @brief Constructor for Flashcard
      * @param parent is a pointer to the flashcard's parent.
      */
@@ -92,6 +104,12 @@ private:
      * @todo Make this a QList of QStrings
      */
     QString keywords_;
+
+    /**
+     * @brief A list of string which hold all of the keywords of the cards.
+     *        This is used for the search feature
+     */
+    QStringList keywordsList_;
 signals:
     void contextChanged(bool changed);
 private slots:

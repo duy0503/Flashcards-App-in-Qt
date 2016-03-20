@@ -60,9 +60,7 @@ private:
      */
     void setCurrentFile(const QString &fileName);
 
-    /**
-     * @brief Opens a
-     */
+
     void openFile();
     bool saveFile();
     bool saveAsFile();
@@ -81,7 +79,10 @@ private slots:
     void on_actionSave_triggered();     // triggered whenever the save button is clicked
     void on_actionClose_triggered();    // triggered whenever the close button is clicked
     void on_actionSave_As_triggered();  // triggered whenever the save as button is clicked
-    void on_AddNewCardButton_clicked(); //triggered whenever the add new card button is clicked
+    void on_AddNewCardButton_clicked(); // triggered whenever the add new card button is clicked
+    void on_searchButton_clicked();     // triggered whenever the search button is clicked
+    void on_searchEdit_editingFinished(); // triggerd whenever user presses Enter after putting in a search key into the searchEdit
+    //void on_searchEdit_textChanged(const QString &arg1); // trigger whenever the search key is changed in the searchEdit
 };
 
 #endif // MAINWINDOW_H

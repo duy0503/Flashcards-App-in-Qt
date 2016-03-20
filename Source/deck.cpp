@@ -35,9 +35,15 @@ bool Deck::Open(const QString &fileName) {
         Flashcard* newcard = new Flashcard;
         deck_.append(newcard);
 
+        // get keywords
+        QJsonArray keywords = obj["keywords"].toArray();
+        QStringList keywordsList;
+        for (int index = 0; index < keywords.size(); ++index) {
+            keywordsList.append(keywords[index].toString());
+        }
+        newcard->setKeywordsList(keywordsList);
         newcard->setQuestion(obj["question"].toString());
-        newcard->setAnswer(obj["answer"].toString());
-        newcard->setKeywords(obj["keywords"].toString());
+        newcard->setAnswer(obj["answer"].toString());    
         QObject::connect(newcard, SIGNAL(contextChanged(bool)), this, SLOT(setDeckModified(bool)));
 
     }
@@ -70,9 +76,15 @@ bool Deck::Save(const QString &fileName) {
     foreach(Flashcard *card, deck_)
     {
         QJsonObject obj;
+        QJsonArray keywords;
+        QStringList keywordsList = card->getKeywordsList();
+        foreach(QString keyword, keywordsList){
+            keywords.append(keyword);
+        }
+
         obj["question"] = card->getQuestion();
         obj["answer"] = card->getAnswer();
-        obj["keywords"] = card->getKeywords();
+        obj["keywords"] = keywords;
         cardsList.append(obj);
     }
     QJsonObject deckObj;
@@ -87,6 +99,7 @@ bool Deck::Save(const QString &fileName) {
 void Deck::setDeckModified(bool modified){
     deckModified_ = modified;
 }
+
 void Deck::addNewCard(){
 
     Flashcard* newcard = new Flashcard;
@@ -147,5 +160,31 @@ void Deck::addNewCard(){
             setDeckModified(true);
         }
 
+    }
+}
+
+void Deck::runSearchFeature(QString key){
+
+    if ( key != ""){
+        key = key.toLower();
+        foreach(Flashcard* card, deck_){
+            card->keywordsButton->hide();
+            QStringList keywords = card->getKeywordsList();
+            foreach(QString keyword, keywords){
+                keyword = keyword.toLower();
+                if ( key == keyword) {
+                    card->keywordsButton->show();
+                    break;
+                }
+            }
+        }
+    }
+    else showAllCards();
+
+}
+
+void Deck::showAllCards(){
+    foreach(Flashcard* card, deck_){
+        card->keywordsButton->show();
     }
 }
