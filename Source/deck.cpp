@@ -147,6 +147,7 @@ void Deck::deleteCardInDeck(Flashcard *card){
 
     // Remove the card from deck_
     deck_.removeOne(card);
+    delete card;
 
     // Update the display after the card is deleted
     emit updateDisplayAfterDeletingCard();

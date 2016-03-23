@@ -45,7 +45,6 @@ void Flashcard::on_deleteButton_clicked(){
     if (r == QMessageBox::Ok){
         // Trigger function deleteCardInDeck in deck.cpp to delete the card from deck
         emit deleteCard(this);
-        this->hide();
     }
 }
 
