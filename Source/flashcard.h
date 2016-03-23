@@ -122,6 +122,7 @@ private:
     QStringList keywordsList_;
 signals:
     void contextChanged(bool changed);
+    void deleteCard(Flashcard* card);
 private slots:
     void showCard();
     void on_editButton_clicked();

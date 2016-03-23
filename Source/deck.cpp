@@ -46,6 +46,7 @@ bool Deck::Open(const QString &fileName){
         newcard->setQuestion(obj["question"].toString());
         newcard->setAnswer(obj["answer"].toString());    
         QObject::connect(newcard, SIGNAL(contextChanged(bool)), this, SLOT(setDeckModified(bool)));
+        QObject::connect(newcard, SIGNAL(deleteCard(Flashcard*)), this, SLOT(deleteCardInDeck(Flashcard*)));
 
     }
     setDeckModified(false);
@@ -140,4 +141,16 @@ void Deck::showAllCards(){
     foreach(Flashcard* card, deck_){
         card->keywordsButton->show();
     }
+}
+
+void Deck::deleteCardInDeck(Flashcard *card){
+
+    // Remove the card from deck_
+    deck_.removeOne(card);
+
+    // Update the display after the card is deleted
+    emit updateDisplayAfterDeletingCard();
+
+    // Let the deck know that it has been modified
+    setDeckModified(true);
 }

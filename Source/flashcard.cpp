@@ -41,13 +41,11 @@ void Flashcard::on_deleteButton_clicked(){
     int r = QMessageBox::warning(this, tr("Warning!"),
                                  tr("Are you sure you wish to delete this flashcard?"),
                                  QMessageBox::Ok | QMessageBox::Cancel);
-    if (r == QMessageBox::Cancel)
-    {
-        return;
-    }
-    else if (r == QMessageBox::Ok)
-    {
-        delete this;
+
+    if (r == QMessageBox::Ok){
+        // Trigger function deleteCardInDeck in deck.cpp to delete the card from deck
+        emit deleteCard(this);
+        this->hide();
     }
 }
 

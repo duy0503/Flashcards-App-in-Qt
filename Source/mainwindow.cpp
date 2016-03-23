@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ScrollAreaLayout = new QGridLayout();
     //ui->TestYourselfButton->hide();
     currentFileName = "";
+    QObject::connect(&deck, SIGNAL(updateDisplayAfterDeletingCard()), this, SLOT(display()));
 }
 
 MainWindow::~MainWindow(){

@@ -55,9 +55,10 @@ public:
 private:
     bool deckModified_;
 signals:
-
+    void updateDisplayAfterDeletingCard();
 public slots:
     void setDeckModified(bool modified);
+    void deleteCardInDeck(Flashcard* card);
 };
 
 #endif // DECK1_H

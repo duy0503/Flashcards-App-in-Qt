@@ -64,7 +64,6 @@ private:
     void openFile();
     bool saveFile();
     bool saveAsFile();
-    void display();
     void updateDisplayWindow();
     void updateWindowTitle();
     void clearScrollArea();
@@ -73,6 +72,8 @@ private:
 protected:
     void closeEvent(QCloseEvent *event);
 
+public slots:
+    void display();
 private slots:
     void on_actionNew_triggered();      // triggered whenever the new button is clicked
     void on_actionOpen_triggered();     // triggered whenever the open button is clicked
