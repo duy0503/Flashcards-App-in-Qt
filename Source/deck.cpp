@@ -9,6 +9,7 @@
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
 #include "deck.h"
+#include <QDebug>
 #include "flashcard.h"
 
 Deck::Deck(QObject *parent) : QObject(parent){
@@ -110,7 +111,9 @@ void Deck::addNewCard(){
 
     // if a new card is created
     if ( newcard->createFormToEditCard() == true ){
-        deck_.push_front(newcard);
+        deck_.append(newcard);
+        QObject::connect(newcard, SIGNAL(deleteCard(Flashcard*)), this, SLOT(deleteCardInDeck(Flashcard*)));
+        QObject::connect(newcard, SIGNAL(contextChanged(bool)), this, SLOT(setDeckModified(bool)));
         setDeckModified(true);
     }
 
