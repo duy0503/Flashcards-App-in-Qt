@@ -64,17 +64,14 @@ void MainWindow::on_searchButton_clicked(){
     deck.runSearchFeature(ui->searchEdit->text());
 }
 
-void MainWindow::on_searchEdit_editingFinished(){
-
+void MainWindow::on_searchEdit_editingFinished() {
     deck.runSearchFeature(ui->searchEdit->text());
     ui->searchEdit->clearFocus();
 }
 
-/*void MainWindow::on_searchEdit_textChanged(const QString &arg1)
-{
+void MainWindow::on_searchEdit_textChanged(const QString &arg1) {
         deck.runSearchFeature(ui->searchEdit->text());
 }
-*/
 
 bool MainWindow::okToClose(){
 

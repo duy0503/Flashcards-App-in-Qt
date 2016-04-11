@@ -83,7 +83,7 @@ private slots:
     void on_AddNewCardButton_clicked(); // triggered whenever the add new card button is clicked
     void on_searchButton_clicked();     // triggered whenever the search button is clicked
     void on_searchEdit_editingFinished(); // triggerd whenever user presses Enter after putting in a search key into the searchEdit
-    //void on_searchEdit_textChanged(const QString &arg1); // trigger whenever the search key is changed in the searchEdit
+    void on_searchEdit_textChanged(const QString &arg1); // trigger whenever the search key is changed in the searchEdit
 };
 
 #endif // MAINWINDOW_H

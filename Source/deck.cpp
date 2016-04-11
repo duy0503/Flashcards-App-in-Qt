@@ -10,6 +10,7 @@
 #include <QDialogButtonBox>
 #include "deck.h"
 #include <QDebug>
+#include <QRegExp>
 #include "flashcard.h"
 
 Deck::Deck(QObject *parent) : QObject(parent){
@@ -120,23 +121,18 @@ void Deck::addNewCard(){
 }
 
 void Deck::runSearchFeature(QString key){
-
     if ( key != ""){
-        key = key.toLower();
         foreach(Flashcard* card, deck_){
             card->keywordsButton->hide();
             QStringList keywords = card->getKeywordsList();
-            foreach(QString keyword, keywords){
-                keyword = keyword.toLower();
-                if ( key == keyword) {
-                    card->keywordsButton->show();
-                    break;
-                }
+            QString full = keywords.join(" ");
+            QRegExp matcher = QRegExp(key, Qt::CaseInsensitive);
+            if (matcher.indexIn(full) > -1) {
+                  card->keywordsButton->show();
             }
         }
     }
     else showAllCards();
-
 }
 
 void Deck::showAllCards(){
