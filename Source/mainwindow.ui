@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>477</height>
+    <width>600</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -118,6 +118,9 @@ QLineEdit {
       <property name="styleSheet">
        <string notr="true">QWidget {
 	background-color: #bbdefb;
+	background-image: url(:/csuf_circular_transparent.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 QScrollBar {
@@ -159,8 +162,8 @@ QScrollBar {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>445</width>
-            <height>313</height>
+            <width>583</width>
+            <height>436</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -448,7 +451,7 @@ QScrollBar {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>462</width>
+     <width>600</width>
      <height>27</height>
     </rect>
    </property>
