@@ -26,8 +26,11 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
+   <string notr="true">#Flashcard {
 	background-color: #ffffff;
+	border-image: url(:/index.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
