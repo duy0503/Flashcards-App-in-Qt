@@ -22,7 +22,7 @@ typedef class Test : public QWidget
     Q_OBJECT
 
 public:
-    Deck* testDeck_;
+    Deck *testDeck_;
     Flashcard* currentCard_;
     QList<int> shuffledSequence_;
     int currentSequenceIndex_;
@@ -44,6 +44,8 @@ public:
 private:
     Ui::Test *ui;
 
+signals:
+    void testFinished();
 private slots:
     void animationFinished();
 } Test;

@@ -49,6 +49,8 @@ private:
      */
     QGridLayout *ScrollAreaLayout;
 
+    Test *testDisplay;
+
     /**
      * @brief Checks if the file is modified. If it returns true, we should prompt the user to save.
      * @returns A bool that is true if there are any unsaved changes, or false otherwise.
@@ -84,8 +86,10 @@ private slots:
     void on_searchButton_clicked();     // triggered whenever the search button is clicked
     void on_searchEdit_editingFinished(); // triggerd whenever user presses Enter after putting in a search key into the searchEdit
     void on_searchEdit_textChanged(const QString &arg1); // trigger whenever the search key is changed in the searchEdit
-    void on_TestYourselfButton_clicked();
     void on_actionAbout_triggered();
+    void on_TestYourselfButton_clicked();
+    void on_TestYourselfFinished();
+    void on_StopTestYourselfButton_clicked();
 };
 
 #endif // MAINWINDOW_H

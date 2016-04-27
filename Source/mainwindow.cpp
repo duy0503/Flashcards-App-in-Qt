@@ -17,10 +17,23 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     this->setWindowTitle(tr("Flashcards"));
+
+    // Create a layout to display flashcards
     ScrollAreaLayout = new QGridLayout();
-    //ui->TestYourselfButton->hide();
+
+    // Create a layout for Test Yourself
+    testDisplay = new Test();
+    ui->displayStackedWidget->addWidget(testDisplay);
+
+    // Set the main display to displayFlashcards
+    ui->displayStackedWidget->setCurrentWidget(ui->displayFlashcards);
+
+    ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage1);
+
     currentFileName = "";
     QObject::connect(&deck, SIGNAL(updateDisplayAfterDeletingCard()), this, SLOT(display()));
+    QObject::connect(testDisplay, SIGNAL(testFinished()), this, SLOT(on_TestYourselfFinished()));
+
 }
 
 MainWindow::~MainWindow(){
@@ -53,13 +66,10 @@ void MainWindow::on_actionSave_As_triggered(){
     saveAsFile();
 }
 
-
-void MainWindow::on_actionAbout_triggered()
-{
+void MainWindow::on_actionAbout_triggered() {
     QMessageBox::about(this, tr("About Flashcards"), tr("Version 1.0\n\nCreators:\n"
-        "Marvin Duro, Duy Do, Daniel Ceja, Crystal Juarez, An Ngo\n"));
+                                                        "Marvin Duro, Duy Do, Daniel Ceja, Crystal Juarez, An Ngo\n"));
 }
-
 void MainWindow::on_AddNewCardButton_clicked(){
 
     deck.addNewCard();
@@ -76,9 +86,13 @@ void MainWindow::on_searchEdit_editingFinished() {
 }
 
 void MainWindow::on_searchEdit_textChanged(const QString &arg1) {
-        deck.runSearchFeature(ui->searchEdit->text());
+    deck.runSearchFeature(ui->searchEdit->text());
 }
 
+void MainWindow::on_StopTestYourselfButton_clicked()
+{
+    on_TestYourselfFinished();
+}
 bool MainWindow::okToClose(){
 
     if (deck.isDeckModified())
@@ -108,10 +122,10 @@ void MainWindow::setCurrentFile(const QString &fileName){
 void MainWindow::newFile(){
 
     if( okToClose() ){
-       deck.Clear();
-       currentFileName = "";
-       deck.setDeckModified(false);
-       updateDisplayWindow();
+        deck.Clear();
+        currentFileName = "";
+        deck.setDeckModified(false);
+        updateDisplayWindow();
     }
 
 }
@@ -239,13 +253,20 @@ void MainWindow::closeEvent (QCloseEvent *event){
 
 void MainWindow::on_TestYourselfButton_clicked() {
     if ( deck.deck_.length() > 0 ){
-        Test* test = new Test();
-        test->setDeck(&deck);
-        test->show();
-        test->startTest();
+        testDisplay->setDeck(&deck);
+        ui->displayStackedWidget->setCurrentWidget(testDisplay);
+        ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage2);
+        testDisplay->startTest();
     }
     else {
         QMessageBox::information(this, tr("Test Yourself"),
                                  tr("Deck is empty. Please open a deck"));
     }
 }
+
+void MainWindow::on_TestYourselfFinished(){
+    ui->displayStackedWidget->setCurrentWidget(ui->displayFlashcards);
+    ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage1);
+}
+
+

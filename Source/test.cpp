@@ -14,6 +14,7 @@ Test::Test(QWidget *parent) :
 
 void Test::setDeck(Deck* deck) {
     testDeck_ = deck;
+    shuffledSequence_.clear();
     return;
 }
 
@@ -38,8 +39,8 @@ void Test::startTest() {
     flipAnimation.setParent(ui->cardWidget);
     flipAnimation.setTargetObject(ui->cardWidget);
     flipAnimation.setPropertyName("maximumSize");
-    flipAnimation.setStartValue(QSize(400, 300));
-    flipAnimation.setEndValue(QSize(0, 300));
+    flipAnimation.setStartValue(QSize(800, 600));
+    flipAnimation.setEndValue(QSize(0, 600));
     flipAnimation.setDuration(250);
     connect(&flipAnimation, SIGNAL(finished()), this, SLOT(animationFinished()) );
     updatePromptLabel();
@@ -86,6 +87,7 @@ void Test::advanceTest() {
     }
     else {
         close();
+        emit testFinished();
     }
 }
 
