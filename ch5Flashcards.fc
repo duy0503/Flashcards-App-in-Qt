@@ -2,28 +2,110 @@
     "Deck": [
         {
             "answer": "Extreme Programming (XP)",
-            "keywords": ["Agile", "Approach"],
+            "keywords": [
+                "Agile",
+                "Approach"
+            ],
             "question": "What is the most widely used approach to agile software development?"
         },
         {
             "answer": "It \"flattens\" it",
-            "keywords": ["Agile" , "Process", "Cost"],
+            "keywords": [
+                "Agile",
+                "Process",
+                "Cost"
+            ],
             "question": "What does a well-designed agile process do to the cost of change curve?"
         },
         {
             "answer": "12",
-            "keywords": ["Principles"],
+            "keywords": [
+                "Principles"
+            ],
             "question": "How many agility principles are there?"
         },
         {
             "answer": "Planning, design, coding, and testing",
-            "keywords": ["Framework Activities", "XP"],
+            "keywords": [
+                "Framework Activities",
+                "XP"
+            ],
             "question": "what are the four framework activities of the XP process?"
         },
         {
             "answer": "Scrum",
-            "keywords": ["Jeff Sutherland"],
+            "keywords": [
+                "Jeff Sutherland"
+            ],
             "question": "Which agile software development method did Jeff Sutherland create?"
+        },
+        {
+            "answer": "1. Importance of self-organizing teams.\n2. Communication & collaboration between team members & customers.\n3. Recognition that change represents opportunity.\n4. Emphasis on rapid delivery of software that satisfies customer",
+            "keywords": [
+                "Agile",
+                "Philosophy"
+            ],
+            "question": "What are the key issues stressed by an agile philosophy of software engineering?"
+        },
+        {
+            "answer": "1. Individuals & interactions > processes & tools.\n2. Working software > comprehensive documentation.\n3. Customer collaboration > contract negotiation.\n4. Responding to change > following a plan.",
+            "keywords": [
+                "Manifesto",
+                "Tradeoffs"
+            ],
+            "question": "What are the tradeoffs proposed by the \"Manifesto for Agile Software Development\"?"
+        },
+        {
+            "answer": "Participate as full collaborators. Source of information used to create use cases. Provide info on business value of proposed software feature & functionality. Provide feedback on operational prototypes during incremental delivery of software increments.",
+            "keywords": [
+                "Customer Role",
+                "End user role",
+                "Customer",
+                "role"
+            ],
+            "question": "Describe the role of customers and end-users on an agile process team?"
+        },
+        {
+            "answer": "1. difficult to predict which requirements & customer priorities will change or not.\n2. Difficult to predict how much design is needed before construction can be used to prove the design.\n3. Analysis, design, construction, and testing aren't always predictable processes .",
+            "keywords": [
+                "Key assumptions"
+            ],
+            "question": "What are the three key assumptions regarding software projects?"
+        },
+        {
+            "answer": "Agile process models deliver software increments followed by customer feedback and revision. Because the increments are small and the customer feedback is prompt, it is relatively easy to incorporate the changes in the next software increment. For example, ASD uses an iterative process that incorporate adaptive cycle planning, relatively rigorous requirement gathering methods, and an iterative development cycle that incorporates customer focus groups and formal technical reviews as real-time feedback mechanisms. The Dynamic Systems Development Method (DSDM) defines three different iterative cycles—functional model iteration, design and build iteration, and implementation— preceded by two additional life cycle activities—feasibility study and business study.",
+            "keywords": [
+                "Iterative Process"
+            ],
+            "question": "Why does an iterative process make easier to manage change?"
+        },
+        {
+            "answer": "It is equally difficult to predict how customer priorities will change as the project proceeds. It is often difficult for people to verbalize their software needs until they see a working prototype and realize that they had forgotten to consider something important.",
+            "keywords": [
+                "Requirements",
+                "change"
+            ],
+            "question": "Why do requirements change so much?"
+        },
+        {
+            "answer": "If a difficult design problem is encountered as part of the design of a story, XP recommends the immediate creation of a operational prototype of that portion of the design, called a spike solution, the design prototype is implemented and evaluated. The intent is to lower risk when true implementation starts and to validate the original estimates for the story containing the design problem.",
+            "keywords": [
+                "spike solution",
+                "xp"
+            ],
+            "question": "What is a spike solution in XP?"
+        },
+        {
+            "answer": "XP encourages refactoring—a construction technique that is also a design technique. Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves the internal structure. A central notion in XP is that design occurs both before and after coding commences. Refactoring means that design occurs continuously as the system is constructed a key concept during the coding activity is pair programming. XP recommends that two people work together at one computer workstation to create code for a story. This provides a mechanism for real-time problem solving (two heads are often better than one) and real-time quality assurance.",
+            "keywords": [
+                "Xp",
+                "refactoring",
+                "pair programming",
+                "Xp",
+                "refactoring",
+                "pp"
+            ],
+            "question": "What is the XP concept of refactoring and pair programming?"
         }
     ]
 }
