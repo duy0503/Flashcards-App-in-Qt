@@ -85,6 +85,7 @@ private slots:
     void on_searchEdit_editingFinished(); // triggerd whenever user presses Enter after putting in a search key into the searchEdit
     void on_searchEdit_textChanged(const QString &arg1); // trigger whenever the search key is changed in the searchEdit
     void on_TestYourselfButton_clicked();
+    void on_actionAbout_triggered();
 };
 
 #endif // MAINWINDOW_H
