@@ -1,7 +1,6 @@
 #include "flashcard.h"
 #include "ui_flashcard.h"
 #include <QDialog>
-#include <QFormLayout>
 #include <QLineEdit>
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
@@ -12,9 +11,21 @@
 Flashcard::Flashcard(QWidget *parent) :
     QWidget(parent),
     flashcardUi(new Ui::Flashcard){
-
     flashcardUi->setupUi(this);
+
     keywordsButton = new QPushButton(this);
+    keywordsButton->setObjectName("keywordsButton");
+    keywordsButton->setStyleSheet("#keywordsButton {border-image: url(:/index.png);}");
+
+    QVBoxLayout* layout = new QVBoxLayout(keywordsButton);
+    keywordsButton->setLayout(layout);
+
+    keywordsLabel = new QLabel(keywordsButton);
+    layout->addWidget(keywordsLabel);
+    keywordsLabel->setObjectName("keywordsLabel");
+    keywordsLabel->setStyleSheet("#keywordsLabel {font-size: 24pt;}");
+    keywordsLabel->setWordWrap(true);
+    keywordsLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 }
 
 
@@ -74,13 +85,8 @@ void Flashcard::setKeywords(QString keywords){
 
     keywords_ = keywords;
     this->setWindowTitle(keywords_);
-    keywordsButton->setText(keywords);
     keywordsButton->setFixedSize(432, 270);
-    // QFont font = keywordsButton->font();
-    // font.setPointSize(15);
-    // keywordsButton->setFont(font);
-
-    keywordsButton->setStyleSheet("font-size: 24pt; border-image: url(:/index.png);");
+    keywordsLabel->setText(keywords);
     QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 

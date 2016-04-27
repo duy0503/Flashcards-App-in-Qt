@@ -49,10 +49,10 @@ void Test::startTest() {
 
 void Test::updatePromptLabel() {
     if (state_ == question) {
-        ui->promptLabel->setStyleSheet("QWidget {background-color: white; border-image: url(:/index.png)}");
+        ui->cardWidget->setStyleSheet("#cardWidget {background-color: white; border-image: url(:/index.png)}");
         ui->promptLabel->setText(currentCard_->getQuestion());
     } else {
-        ui->promptLabel->setStyleSheet("QWidget {background-color: white; border-image: none}");
+        ui->cardWidget->setStyleSheet("#cardWidget {background-color: white; border-image: none}");
         ui->promptLabel->setText(currentCard_->getAnswer());
     }
 }
@@ -60,11 +60,14 @@ void Test::updatePromptLabel() {
 void Test::playFlipAnimation() {
     flipAnimation.setEasingCurve(QEasingCurve::OutCubic);
     flipAnimation.setDirection(QPropertyAnimation::Forward);
+    ui->promptLabel->setVisible(false);
     flipAnimation.start();
 }
 
 void Test::animationFinished() {
+    ui->promptLabel->setVisible(true);
     if (flipAnimation.direction() == QPropertyAnimation::Forward) {
+        ui->promptLabel->setVisible(false);
         flipAnimation.setEasingCurve(QEasingCurve::InCubic);
         flipAnimation.setDirection(QPropertyAnimation::Backward);
         updatePromptLabel();

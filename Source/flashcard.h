@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QLabel>
+#include <QFormLayout>
 #include <QString>
 
 namespace Ui {
@@ -86,7 +88,17 @@ public:
      * @brief A pointer to QPushButton which is displayed in the main window.
      * @todo Make this private.
      */
-    QPushButton *keywordsButton;
+    QPushButton* keywordsButton;
+
+    /**
+     * @brief A pointer to QLabel that contains the text.
+     */
+    QLabel* keywordsLabel;
+
+    /**
+     * @brief layout so that the label is centered inside the button.
+     */
+    QGridLayout* layout;
 
     /**
      * @brief create a form for user to edit the flashcard
