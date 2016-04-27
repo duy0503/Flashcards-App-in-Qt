@@ -53,6 +53,13 @@ void MainWindow::on_actionSave_As_triggered(){
     saveAsFile();
 }
 
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox::about(this, tr("About Flashcards"), tr("Version 1.0\n\nCreators:\n"
+        "Marvin Duro, Duy Do, Daniel Ceja, Crystal Juarez, An Ngo\n"));
+}
+
 void MainWindow::on_AddNewCardButton_clicked(){
 
     deck.addNewCard();
