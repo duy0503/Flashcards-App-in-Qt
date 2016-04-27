@@ -60,7 +60,6 @@ void MainWindow::on_AddNewCardButton_clicked(){
 }
 
 void MainWindow::on_searchButton_clicked(){
-
     deck.runSearchFeature(ui->searchEdit->text());
 }
 
@@ -191,7 +190,7 @@ void MainWindow::updateWindowTitle(){
 /* Function to display the list of cards on Main Window */
 void MainWindow::display() {
 
-    int columns = qMax( (this->size().width() - 32) / (432 + 24), 1 ); // 32 for the window border, 20 for the spacing between each card
+    int columns = qMax( (this->size().width() - 32) / (432 + 24), 1 ); // 32 for the window border, 24 for the spacing between each card
     Flashcard* card;
     int total = 0;
 
@@ -219,7 +218,6 @@ void MainWindow::clearScrollArea(){
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event) {
-
     QMainWindow::resizeEvent(event);
     display();
 }
@@ -232,6 +230,9 @@ void MainWindow::closeEvent (QCloseEvent *event){
     else event->ignore();
 }
 
-
-
-
+void MainWindow::on_TestYourselfButton_clicked() {
+    Test* test = new Test();
+    test->setDeck(&deck);
+    test->show();
+    test->startTest();
+}

@@ -7,7 +7,7 @@
 #include <QSize>            // QSize
 #include <flashcard.h>      // Flashcard class
 #include <deck.h>           // Deck class
-
+#include <test.h>           // Test class
 
 namespace Ui {
 class MainWindow;
@@ -84,6 +84,7 @@ private slots:
     void on_searchButton_clicked();     // triggered whenever the search button is clicked
     void on_searchEdit_editingFinished(); // triggerd whenever user presses Enter after putting in a search key into the searchEdit
     void on_searchEdit_textChanged(const QString &arg1); // trigger whenever the search key is changed in the searchEdit
+    void on_TestYourselfButton_clicked();
 };
 
 #endif // MAINWINDOW_H
