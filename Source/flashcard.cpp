@@ -115,7 +115,7 @@ QStringList Flashcard::getKeywordsList(){
 void Flashcard::updateKeywordsList(QString keywords){
 
     QStringList list = keywords.split(',', QString::KeepEmptyParts);
-    keywordsList_.empty();
+    keywordsList_.clear();
     foreach(QString keyword, list){
         keyword = keyword.trimmed();
         keywordsList_.append(keyword);
