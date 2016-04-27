@@ -231,8 +231,14 @@ void MainWindow::closeEvent (QCloseEvent *event){
 }
 
 void MainWindow::on_TestYourselfButton_clicked() {
-    Test* test = new Test();
-    test->setDeck(&deck);
-    test->show();
-    test->startTest();
+    if ( deck.deck_.length() > 0 ){
+        Test* test = new Test();
+        test->setDeck(&deck);
+        test->show();
+        test->startTest();
+    }
+    else {
+        QMessageBox::information(this, tr("Test Yourself"),
+                                 tr("Deck is empty. Please open a deck"));
+    }
 }
