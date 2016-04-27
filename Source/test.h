@@ -36,6 +36,7 @@ public:
     void advanceTest();
     void updatePromptLabel();
     void playFlipAnimation();
+    void updateWindowTitle(QString title);
     ~Test();
 
     void mousePressEvent(QMouseEvent* event);
