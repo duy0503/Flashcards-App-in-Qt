@@ -89,7 +89,6 @@ void Test::advanceTest() {
         updateWindowTitle("Question ");
     }
     else {
-        close();
         emit testFinished();
     }
 }

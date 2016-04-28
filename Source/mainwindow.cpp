@@ -8,6 +8,8 @@
 #include <QTextStream>
 #include <QGridLayout>
 #include <QResizeEvent>
+#include <QHBoxLayout>
+
 #include <QDebug>
 
 
@@ -23,7 +25,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Create a layout for Test Yourself
     testDisplay = new Test();
-    ui->displayStackedWidget->addWidget(testDisplay);
+    testDisplayWidget = new QWidget();
+    testDisplayLayout = new QHBoxLayout();
+    testDisplayLayout->addWidget(testDisplay);
+    testDisplayWidget->setLayout(testDisplayLayout);
+    ui->displayStackedWidget->addWidget(testDisplayWidget);
 
     // Set the main display to displayFlashcards
     ui->displayStackedWidget->setCurrentWidget(ui->displayFlashcards);
@@ -254,7 +260,7 @@ void MainWindow::closeEvent (QCloseEvent *event){
 void MainWindow::on_TestYourselfButton_clicked() {
     if ( deck.deck_.length() > 0 ){
         testDisplay->setDeck(&deck);
-        ui->displayStackedWidget->setCurrentWidget(testDisplay);
+        ui->displayStackedWidget->setCurrentWidget(testDisplayWidget);
         ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage2);
         testDisplay->startTest();
     }

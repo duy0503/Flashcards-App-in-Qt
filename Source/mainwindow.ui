@@ -203,6 +203,8 @@ QScrollBar {
 	background-color : rgba(1, 1, 1, 0); /* transparent so imagewidget shows through  */
 }</string>
               </property>
+              <zorder>bottomStackedWidget</zorder>
+              <zorder>bottomStackedWidget</zorder>
              </widget>
             </widget>
            </item>
@@ -235,7 +237,7 @@ QScrollBar {
       <property name="currentIndex">
        <number>1</number>
       </property>
-      <widget class="QWidget" name="bottomStackedWidgetPage1" native="true">
+      <widget class="QWidget" name="bottomStackedWidgetPage1">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout1">
@@ -483,55 +485,36 @@ QScrollBar {
        </layout>
       </widget>
       <widget class="QWidget" name="bottomStackedWidgetPage2">
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>10</y>
-          <width>531</width>
-          <height>34</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout2" stretch="0">
-         <property name="spacing">
-          <number>20</number>
-         </property>
-         <property name="leftMargin">
-          <number>20</number>
-         </property>
-         <property name="rightMargin">
-          <number>20</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="StopTestYourselfButton">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Droid Sans</family>
-             <pointsize>15</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QPushButton" name="StopTestYourselfButton">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Droid Sans</family>
+            <pointsize>15</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
 	border: none;
 	background-color: rgb(255, 132, 0);
  	color: white;
 }</string>
-           </property>
-           <property name="text">
-            <string>Stop Test </string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+          </property>
+          <property name="text">
+           <string>Stop Test </string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -635,6 +618,13 @@ QScrollBar {
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>AddNewCardButton</tabstop>
+  <tabstop>TestYourselfButton</tabstop>
+  <tabstop>searchEdit</tabstop>
+  <tabstop>searchButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -4,6 +4,7 @@
 #include <QMainWindow>      // QMainWindow
 #include <QGridLayout>      // QGridLayout
 #include <QResizeEvent>     // QResizeEvent
+#include <QHBoxLayout>
 #include <QSize>            // QSize
 #include <flashcard.h>      // Flashcard class
 #include <deck.h>           // Deck class
@@ -49,6 +50,19 @@ private:
      */
     QGridLayout *ScrollAreaLayout;
 
+    /**
+     * @brief A pointer to the QHBoxLayout which holds the display of Test
+     */
+    QHBoxLayout *testDisplayLayout;
+
+    /**
+     * @brief A pointer to the Widget which holds testDiplayLayout
+     */
+    QWidget *testDisplayWidget;
+
+    /**
+     * @brief A pointer to the Widget which display cards for Test
+     */
     Test *testDisplay;
 
     /**
