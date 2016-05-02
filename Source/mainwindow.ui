@@ -31,86 +31,188 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QWidget" name="searchWidget" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>50</height>
-       </size>
-      </property>
+     <widget class="QStackedWidget" name="topStackedWidget">
       <property name="maximumSize">
        <size>
         <width>16777215</width>
         <height>50</height>
        </size>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <property name="styleSheet">
-       <string notr="true">QWidget {
+      <widget class="QWidget" name="topStackedWidgetPage1">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QWidget" name="searchWidget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
 	background-color: #2196f3;
 }
 
 QLineEdit {
 	background-color: rgb(255, 255, 255)
 }</string>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="searchEdit">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>29</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>29</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="searchButton">
-         <property name="minimumSize">
-          <size>
-           <width>67</width>
-           <height>29</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>67</width>
-           <height>29</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Search</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>9</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>9</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="searchEdit">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>29</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>29</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="searchButton">
+             <property name="minimumSize">
+              <size>
+               <width>67</width>
+               <height>29</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>67</width>
+               <height>29</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Search</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="topStackedWidgetPage2">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QWidget" name="progressWidget" native="true">
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QProgressBar" name="progressBar">
+             <property name="maximum">
+              <number>1</number>
+             </property>
+             <property name="value">
+              <number>0</number>
+             </property>
+             <property name="invertedAppearance">
+              <bool>false</bool>
+             </property>
+             <property name="textDirection">
+              <enum>QProgressBar::TopToBottom</enum>
+             </property>
+             <property name="format">
+              <string>%v/%m</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="rightLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="wrongLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
     <item>
@@ -203,8 +305,7 @@ QScrollBar {
 	background-color : rgba(1, 1, 1, 0); /* transparent so imagewidget shows through  */
 }</string>
               </property>
-              <zorder>bottomStackedWidget</zorder>
-              <zorder>bottomStackedWidget</zorder>
+              <zorder>searchWidget</zorder>
              </widget>
             </widget>
            </item>
@@ -235,12 +336,12 @@ QScrollBar {
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="bottomStackedWidgetPage1">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout1">
+         <layout class="QHBoxLayout" name="cardActionWidget">
           <property name="spacing">
            <number>20</number>
           </property>
@@ -519,9 +620,11 @@ QScrollBar {
      </widget>
     </item>
    </layout>
-   <zorder>searchWidget</zorder>
    <zorder>bottomStackedWidget</zorder>
    <zorder>imageWidget</zorder>
+   <zorder>scrollArea</zorder>
+   <zorder>scrollArea</zorder>
+   <zorder>topStackedWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -622,7 +725,6 @@ QScrollBar {
   <tabstop>scrollArea</tabstop>
   <tabstop>AddNewCardButton</tabstop>
   <tabstop>TestYourselfButton</tabstop>
-  <tabstop>searchEdit</tabstop>
   <tabstop>searchButton</tabstop>
  </tabstops>
  <resources/>

@@ -33,13 +33,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Set the main display to displayFlashcards
     ui->displayStackedWidget->setCurrentWidget(ui->displayFlashcards);
-
     ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage1);
+    ui->topStackedWidget->setCurrentWidget(ui->topStackedWidgetPage1);
 
     currentFileName = "";
     QObject::connect(&deck, SIGNAL(updateDisplayAfterDeletingCard()), this, SLOT(display()));
     QObject::connect(testDisplay, SIGNAL(testFinished()), this, SLOT(on_TestYourselfFinished()));
-
+    QObject::connect(testDisplay, SIGNAL(progressUpdate()), this, SLOT(on_testProgressUpdate()));
 }
 
 MainWindow::~MainWindow(){
@@ -262,6 +262,9 @@ void MainWindow::on_TestYourselfButton_clicked() {
         testDisplay->setDeck(&deck);
         ui->displayStackedWidget->setCurrentWidget(testDisplayWidget);
         ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage2);
+        ui->topStackedWidget->setCurrentWidget(ui->topStackedWidgetPage2);
+        ui->progressBar->setMaximum(deck.deck_.length());
+        ui->progressBar->setValue(1);
         testDisplay->startTest();
     }
     else {
@@ -273,6 +276,12 @@ void MainWindow::on_TestYourselfButton_clicked() {
 void MainWindow::on_TestYourselfFinished(){
     ui->displayStackedWidget->setCurrentWidget(ui->displayFlashcards);
     ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage1);
+    ui->topStackedWidget->setCurrentWidget(ui->topStackedWidgetPage1);
 }
 
+void MainWindow::on_testProgressUpdate() {
+    ui->progressBar->setValue(testDisplay->currentSequenceIndex_+1);
+    ui->rightLabel->setText(QString::number(testDisplay->rightCards_));
+    ui->wrongLabel->setText(QString::number(testDisplay->wrongCards_));
+}
 

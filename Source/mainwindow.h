@@ -103,6 +103,7 @@ private slots:
     void on_actionAbout_triggered();
     void on_TestYourselfButton_clicked();
     void on_TestYourselfFinished();
+    void on_testProgressUpdate();
     void on_StopTestYourselfButton_clicked();
 };
 
