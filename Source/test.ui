@@ -97,6 +97,18 @@
              <height>32</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	border: none;
+	background-color: rgbrgb(62, 243, 21);
+ 	color: white;
+}</string>
+           </property>
            <property name="text">
             <string>I already know this!</string>
            </property>
@@ -115,6 +127,18 @@
              <width>16777215</width>
              <height>32</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	border: none;
+	background-color: rgb(241, 22, 8);
+ 	color: white;
+}</string>
            </property>
            <property name="text">
             <string>I don't know this yet...</string>
