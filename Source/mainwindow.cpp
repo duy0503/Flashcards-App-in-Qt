@@ -274,6 +274,9 @@ void MainWindow::on_TestYourselfButton_clicked() {
 }
 
 void MainWindow::on_TestYourselfFinished(){
+    QMessageBox::information(this, "Result",
+                 "You knew " + QString::number(testDisplay->rightCards_) +
+                 " /" + QString::number(testDisplay->testDeck_->deck_.length()) + " cards");
     ui->displayStackedWidget->setCurrentWidget(ui->displayFlashcards);
     ui->bottomStackedWidget->setCurrentWidget(ui->bottomStackedWidgetPage1);
     ui->topStackedWidget->setCurrentWidget(ui->topStackedWidgetPage1);

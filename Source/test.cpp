@@ -2,6 +2,7 @@
 #include "ui_test.h"
 #include <algorithm>
 #include <QDebug>
+#include <QMessageBox>
 #include <QEasingCurve>
 
 
@@ -37,7 +38,6 @@ void Test::startTest() {
     ui->buttonWidget->setVisible(false);
     currentCard_ = testDeck_->deck_[ shuffledSequence_[currentSequenceIndex_] ];
     state_ = question;
-    updateWindowTitle("Question ");
 
     flipAnimation.setParent(ui->cardWidget);
     flipAnimation.setTargetObject(ui->cardWidget);
@@ -90,14 +90,12 @@ void Test::advanceTest() {
     if (state_ == question) {
         state_ = answer;
         playFlipAnimation();
-        updateWindowTitle("Answer ");
     }
     else if (state_ == answer && currentSequenceIndex_ < shuffledSequence_.length()-1) {
         currentSequenceIndex_++;
         state_ = question;
         currentCard_ = testDeck_->deck_[ shuffledSequence_[currentSequenceIndex_] ];
         playFlipAnimation();
-        updateWindowTitle("Question ");
     }
     else {
         emit testFinished();
@@ -125,6 +123,3 @@ void Test::on_wrongButton_clicked() {
     advanceTest();
 }
 
-void Test::updateWindowTitle(QString title) {
-    this->setWindowTitle(title + QString::number(currentSequenceIndex_+1));
-}
