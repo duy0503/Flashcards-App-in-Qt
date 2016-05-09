@@ -16,16 +16,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     flashcard.cpp \
     deck.cpp \
-    test.cpp
+    test.cpp \
+    flashcardbutton.cpp
 
 HEADERS  += mainwindow.h \
     flashcard.h \
     deck.h \
-    test.h
+    test.h \
+    flashcardbutton.h
 
 FORMS    += mainwindow.ui \
     flashcard.ui \
-    test.ui
+    test.ui \
+    flashcardbutton.ui
 
 DISTFILES += \
     FlashcardForm.ui.qml \

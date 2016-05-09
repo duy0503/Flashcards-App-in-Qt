@@ -65,7 +65,7 @@
       <item row="0" column="0">
        <widget class="QWidget" name="cardWidget" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -92,7 +92,7 @@
          <item>
           <widget class="QLabel" name="promptLabel">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -158,7 +158,7 @@
               <property name="styleSheet">
                <string notr="true">QPushButton {
 	border: none;
-	background-color: rgbrgb(62, 243, 21);
+	background-color: rgb(62, 243, 21);
  	color: white;
 }</string>
               </property>
@@ -277,7 +277,7 @@
       <item>
        <widget class="QLabel" name="wrongLabel">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>

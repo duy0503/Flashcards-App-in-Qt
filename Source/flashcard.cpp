@@ -13,25 +13,14 @@ Flashcard::Flashcard(QWidget *parent) :
     flashcardUi(new Ui::Flashcard){
     flashcardUi->setupUi(this);
 
-    keywordsButton = new QPushButton(this);
-    keywordsButton->setObjectName("keywordsButton");
-    keywordsButton->setStyleSheet("#keywordsButton {border-image: url(:/index.png);}");
-
-    QVBoxLayout* layout = new QVBoxLayout(keywordsButton);
-    keywordsButton->setLayout(layout);
-
-    keywordsLabel = new QLabel(keywordsButton);
-    layout->addWidget(keywordsLabel);
-    keywordsLabel->setObjectName("keywordsLabel");
-    keywordsLabel->setStyleSheet("#keywordsLabel {font-size: 24pt;}");
-    keywordsLabel->setWordWrap(true);
-    keywordsLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    button = new FlashcardButton;
+    button->setStyleSheet("#mainWidget {background-color: #ffffff; border-image: url(:/index.png); background-position: center;}");
+    button->setFlashcard(this);
 }
 
 
 Flashcard::~Flashcard(){
-
-    delete keywordsButton;
+    delete button;
     delete flashcardUi;
 }
 
@@ -47,8 +36,8 @@ void Flashcard::on_editButton_clicked(){
     this->show();
 }
 
-void Flashcard::on_deleteButton_clicked(){
 
+void Flashcard::createFormToDeleteCard() {
     int r = QMessageBox::warning(this, tr("Warning!"),
                                  tr("Are you sure you wish to delete this flashcard?"),
                                  QMessageBox::Ok | QMessageBox::Cancel);
@@ -57,6 +46,10 @@ void Flashcard::on_deleteButton_clicked(){
         // Trigger function deleteCardInDeck in deck.cpp to delete the card from deck
         emit deleteCard(this);
     }
+}
+
+void Flashcard::on_deleteButton_clicked(){
+    createFormToDeleteCard();
 }
 
 QString Flashcard::getQuestion(){
@@ -82,12 +75,12 @@ void Flashcard::setAnswer(QString answer){
 }
 
 void Flashcard::setKeywords(QString keywords){
-
-    keywords_ = keywords;
     this->setWindowTitle(keywords_);
-    keywordsButton->setFixedSize(432, 270);
-    keywordsLabel->setText(keywords);
-    QObject::connect(keywordsButton, SIGNAL(clicked(bool)), this, SLOT(showCard()));
+    keywords_ = keywords;
+    button->setLabel(keywords);
+    //button->setParent(this);
+    //button->setStyleSheet("#FlashcardButton {border-image: url(:/index.png);}");
+    QObject::connect(button, SIGNAL(clicked(bool)), this, SLOT(showCard()));
 }
 
 QString Flashcard::getKeywords(){
@@ -182,5 +175,6 @@ bool Flashcard::createFormToEditCard(){
     return isContextChanged;
 
 }
+
 
 

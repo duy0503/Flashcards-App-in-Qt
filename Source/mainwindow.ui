@@ -39,7 +39,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="topStackedWidgetPage1">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -222,11 +222,16 @@ QScrollBar {
        <item row="0" column="0">
         <widget class="QStackedWidget" name="displayStackedWidget">
          <property name="styleSheet">
-          <string notr="true">#displayWidget {
-	background-color : rgba(1, 1, 1, 0); /* transparent so imagewidget shows through  */
+          <string notr="true">#displayStackedWidget {
+	background-color : rgba(255, 255, 255, 0);
 }</string>
          </property>
          <widget class="QWidget" name="displayFlashcards">
+          <property name="styleSheet">
+           <string notr="true">#displayFlashcards {
+	background-color : rgba(255, 255, 255, 0);
+}</string>
+          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="spacing">
             <number>0</number>
@@ -247,7 +252,7 @@ QScrollBar {
             <widget class="QScrollArea" name="scrollArea">
              <property name="styleSheet">
               <string notr="true">#scrollArea {
-	background-color : rgba(1, 1, 1, 0); /* transparent so imagewidget shows through  */
+	background-color : rgba(255, 255, 255, 0);
 }</string>
              </property>
              <property name="verticalScrollBarPolicy">
@@ -276,7 +281,8 @@ QScrollBar {
               </property>
               <property name="styleSheet">
                <string notr="true">#scrollAreaWidgetContents {
-	background-color : rgba(1, 1, 1, 0); /* transparent so imagewidget shows through  */
+	background-color : rgba(255, 255, 255, 0
+);
 }</string>
               </property>
              </widget>

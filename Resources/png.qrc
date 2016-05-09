@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>index.png</file>
         <file>csuf_circular_transparent.png</file>
+        <file>delete.png</file>
+        <file>edit.png</file>
     </qresource>
 </RCC>

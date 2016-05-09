@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QFormLayout>
 #include <QString>
+#include <flashcardbutton.h>
 
 namespace Ui {
 class Flashcard;
@@ -88,12 +89,7 @@ public:
      * @brief A pointer to QPushButton which is displayed in the main window.
      * @todo Make this private.
      */
-    QPushButton* keywordsButton;
-
-    /**
-     * @brief A pointer to QLabel that contains the text.
-     */
-    QLabel* keywordsLabel;
+    FlashcardButton* button;
 
     /**
      * @brief layout so that the label is centered inside the button.
@@ -105,6 +101,8 @@ public:
      * @return true if the card is modified. Otherwise return false
      */
     bool createFormToEditCard();
+
+    void createFormToDeleteCard();
 
     /**
      * @brief Destructor for Flashcard.

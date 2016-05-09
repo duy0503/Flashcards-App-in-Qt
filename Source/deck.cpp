@@ -123,12 +123,12 @@ void Deck::addNewCard(){
 void Deck::runSearchFeature(QString key){
     if ( key != ""){
         foreach(Flashcard* card, deck_){
-            card->keywordsButton->hide();
+            card->button->hide();
             QStringList keywords = card->getKeywordsList();
             QString full = keywords.join(" ");
             QRegExp matcher = QRegExp(key, Qt::CaseInsensitive);
             if (matcher.indexIn(full) > -1) {
-                  card->keywordsButton->show();
+                  card->button->show();
             }
         }
     }
@@ -138,7 +138,7 @@ void Deck::runSearchFeature(QString key){
 void Deck::showAllCards(){
 
     foreach(Flashcard* card, deck_){
-        card->keywordsButton->show();
+        card->button->show();
     }
 }
 

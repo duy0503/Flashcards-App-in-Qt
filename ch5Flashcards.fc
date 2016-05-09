@@ -1,23 +1,6 @@
 {
     "Deck": [
         {
-            "answer": "Extreme Programming (XP)",
-            "keywords": [
-                "Agile",
-                "Approach"
-            ],
-            "question": "What is the most widely used approach to agile software development?"
-        },
-        {
-            "answer": "It \"flattens\" it",
-            "keywords": [
-                "Agile",
-                "Process",
-                "Cost"
-            ],
-            "question": "What does a well-designed agile process do to the cost of change curve?"
-        },
-        {
             "answer": "12",
             "keywords": [
                 "Principles"

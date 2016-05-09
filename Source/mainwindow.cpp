@@ -224,7 +224,7 @@ void MainWindow::display() {
     foreach (card, deck.deck_) {
         int row = total / columns;
         int column = total % columns;
-        ScrollAreaLayout->addWidget(card->keywordsButton, row, column);
+        ScrollAreaLayout->addWidget(card->button, row, column);
         total++;
     }
 
