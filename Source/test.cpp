@@ -35,6 +35,8 @@ void Test::startTest() {
     currentSequenceIndex_ = 0;
     rightCards_ = 0;
     wrongCards_ = 0;
+    ui->rightLabel->setText(QString::number(rightCards_));
+    ui->wrongLabel->setText(QString::number(wrongCards_));
     ui->buttonWidget->setVisible(false);
     currentCard_ = testDeck_->deck_[ shuffledSequence_[currentSequenceIndex_] ];
     state_ = question;
@@ -115,11 +117,13 @@ void Test::mousePressEvent(QMouseEvent* event) {
 
 void Test::on_rightButton_clicked() {
     rightCards_++;
+    ui->rightLabel->setText(QString::number(rightCards_));
     advanceTest();
 }
 
 void Test::on_wrongButton_clicked() {
     wrongCards_++;
+    ui->wrongLabel->setText(QString::number(wrongCards_));
     advanceTest();
 }
 

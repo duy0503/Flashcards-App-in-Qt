@@ -284,7 +284,5 @@ void MainWindow::on_TestYourselfFinished(){
 
 void MainWindow::on_testProgressUpdate() {
     ui->progressBar->setValue(testDisplay->currentSequenceIndex_+1);
-    ui->rightLabel->setText(QString::number(testDisplay->rightCards_));
-    ui->wrongLabel->setText(QString::number(testDisplay->wrongCards_));
 }
 
