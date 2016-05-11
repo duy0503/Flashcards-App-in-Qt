@@ -38,7 +38,7 @@ void Flashcard::on_editButton_clicked(){
 
 
 void Flashcard::createFormToDeleteCard() {
-    int r = QMessageBox::warning(this, tr("Warning!"),
+    int r = QMessageBox::warning(0, tr("Warning!"),
                                  tr("Are you sure you wish to delete this flashcard?"),
                                  QMessageBox::Ok | QMessageBox::Cancel);
 
@@ -122,7 +122,7 @@ void Flashcard::showCard(){
 
 bool Flashcard::createFormToEditCard(){
 
-    QDialog dialog(this);
+    QDialog dialog(0);
     // Use a layout allowing to have a label next to each field
     QFormLayout form(&dialog);
 
